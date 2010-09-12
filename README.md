@@ -1,4 +1,4 @@
-# jQuery Lettering.js
+# Lettering.js, a jQuery plugin for Web Typography
 We developed a lightweight, easy to use Javascript `span` injector, we're calling it "Lettering Dot JS", and we're releasing it today for free over on the Github. Let me demo it for you: `</stevejobs>`
 
 ## Individual Letter Control with Lettering.js
@@ -59,8 +59,7 @@ Which will generate:
 	  <span class="word4">heart.</span>
 	</p>
 
-You can then style each word using the .word# class.
-
+You can then style each word using the `.word#` class.
 
 ## Wrap Lines with Lettering.js
 Once word wrapping was complete, noticed the need for yet another method, one that would break lines up mid-sentence.  We struggled for a semantic way to do this, but then remembered `<br>` tag which a semantic way to say "break this line".  Similar to the above examples where lines of text are broken up by either non-breaking spaces or individual letters, the `lettering('lines')` method will create breakpoints at `<br>` tags:
@@ -75,11 +74,13 @@ Once word wrapping was complete, noticed the need for yet another method, one th
 
 Resulting code:
 
-	<p class="word_split">
+	<p class="line_split">
 	  <span class="line1">Are you</span>
 	  <span class="line2">ready to</span>
 	  <span class="line3">RUMmMmMMBBLE!</span>
 	</p>
+
+As expected it uses the `.line#` ordinal pattern.  You'll also notice the `<br>`'s have been destructively ripped out.  In your CSS, you'll want to declare something like `.line_split span { display:block; }` if you need them to behave as a `<br>` element.
 
 ## Best Practices &amp; Kerning
 There's no real rules, but we've found this to be a pretty quick and elegant solution to create typographical CSS3 posters. We've found it to be a great solution for really custom type headings, while keeping the text selectable.
