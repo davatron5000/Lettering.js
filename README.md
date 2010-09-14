@@ -6,10 +6,10 @@ We'll start with some really basic markup:
 
 	<h1 class="fancy_title">Some Title</h1>
 
-After including jQuery, include Lettering.js, then a script block with the magical `.lettering()` method:
+After including jQuery, [download and include the minified version of Lettering.js](http://github.com/davatron5000/Lettering.js/downloads), then a script block with the magical `.lettering()` method:
 	
 	<script src="path/to/jquery-1.4.2.min.js"></script>
-	<script src="path/to/jquery.lettering-0.5.min.js"></script>
+	<script src="path/to/jquery.lettering.min.js"></script>
 	<script>
 	$(document).ready(function() {
 	  $(".fancy_title").lettering();
@@ -94,7 +94,7 @@ Be smart and use sparingly. You'll probably break your browser if you try to tri
 If you're going through the trouble to load a fancy font and that word or phrase is the largest on the site, then it's important for it to be kerned well.  With Lettering.js, kerning is a breeze. You can simply use `$("#id-of-what-i-want-to-kern").lettering();` and then on each `.char#`, you can set relative position or left/right margin. Works like a charm.
 
 ### Non-Javascript Fallback
-As with any kind of Javascript, have a fall back plan in case the user doesn't have javascript enabled.  The bottom line is up to you, my bottom line would be "legible and on the screen". Also, use `lettering.min.js` (it's smaller) unless you plan on changing something.
+As with any kind of Javascript, have a fall back plan in case the user doesn't have javascript enabled.  The bottom line is up to you, my bottom line would be "legible and on the screen". Also, use `lettering.min.js` [Download the Minified Version of Lettering.js here](http://github.com/davatron5000/Lettering.js/downloads)
 
 ### Performance Anti-Pattern
 Web performance patterns advise that you put Javascripts at the bottom of your page before your `</body>` tag.  There is an unfortunate side effect where you may experiences a [FOUT (Flash of Unstyled Text)](http://paulirish.com/2009/fighting-the-font-face-fout/) when you're manipulating your text after the DOM has loaded.  Unfortunately, we found the best solution to avoid/minimize the FOUT caused by this plugin is to put your scripts (jQuery, Lettering.js) in the document `<head>`. On the one hand, your page will load slower. On the other hand, a flash/restyling makes your site feel slow. Users might ultimately feel the site is faster if they don't see the FOUT.
