@@ -33,6 +33,8 @@ The resulting code will churn your `.fancy_title` and output the following:
 
 Magical. Now the text is easy to manipulate in your CSS using an ordinal `.char#` pattern.  This plugin assumes basic counting skills, but it's a pretty fast and easy way to get control over every letter.
 
+You get further control from classes based on the actual letter for character styling. As you can see in the example above `.charS` allows you to style the letter `s`. __Please Note:__ class names are case-insensitive.
+
 As you can imagine, it would be a pain in the ass to have all those `spans` littering your markup and a nightmare to maintain. If the client came by the next day and said that the SEO Expert demands that you have to change the title to "Cool Title", it'd just be a matter of changing the original clean markup to:
 
 	<h1 class="fancy_title">Cool Title</h1>
