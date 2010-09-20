@@ -10,7 +10,7 @@
 * Date: Mon Sep 13 11:54:00 2010 -0600
 */
 (function($){
-	var nonAlphanumeric = /[^a-z0-9]/gi;
+	var nonAlphanumeric = /[^a-z0-9_]/gi;
 	
 	var methods = {
 		init : function() {
@@ -48,8 +48,9 @@
 		var a = t.text().split(splitter), inject = '';
 		if(a.length > 0) {
 			$(a).each(function(i, item) {
-				inject += '<span class="'+klass+(i+1)+' '+klass+item.replace(nonAlphanumeric, '')+'">'+item+'</span>'+after;
-			});	
+				inject += '<span class="'+klass+(i+1)+' '+klass+(item === ' ' ? '_' : item.replace(nonAlphanumeric, ''))+'">'+item+'</span>'+after;
+				//
+			});
 			t.empty();
 			t.append(inject);
 		}

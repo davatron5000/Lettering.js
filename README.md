@@ -19,16 +19,16 @@ After including jQuery, [download and include the minified version of Lettering.
 The resulting code will churn your `.fancy_title` and output the following:
 
 	<h1 class="fancy_title">
-	  <span class="char1">S</span>
-	  <span class="char2">o</span>
-	  <span class="char3">m</span>
-	  <span class="char4">e</span>
-	  <span class="char5"></span>
-	  <span class="char6">T</span>
-	  <span class="char7">i</span>
-	  <span class="char8">t</span>
-	  <span class="char9">l</span>
-	  <span class="char10">e</span>
+	  <span class="char1 charS">S</span>
+	  <span class="char2 charo">o</span>
+	  <span class="char3 charm">m</span>
+	  <span class="char4 chare">e</span>
+	  <span class="char5 char_"> </span>
+	  <span class="char6 charT">T</span>
+	  <span class="char7 chari">i</span>
+	  <span class="char8 chart">t</span>
+	  <span class="char9 chal">l</span>
+	  <span class="char10 chare">e</span>
 	</h1>
 
 Magical. Now the text is easy to manipulate in your CSS using an ordinal `.char#` pattern.  This plugin assumes basic counting skills, but it's a pretty fast and easy way to get control over every letter.
@@ -55,10 +55,10 @@ Here's an example of the `.lettering('words')` method:
 Which will generate:
 
 	<p class="word_split">
-	  <span class="word1">Don't</span>
-	  <span class="word2">break</span>
-	  <span class="word3">my</span>
-	  <span class="word4">heart.</span>
+	  <span class="word1 wordDont">Don't</span>
+	  <span class="word2 wordbreak">break</span>
+	  <span class="word3 wordmy">my</span>
+	  <span class="word4 wordheart">heart.</span>
 	</p>
 
 You can then style each word using the `.word#` class.
@@ -77,9 +77,9 @@ Once word wrapping was complete, we noticed the need for yet another method, one
 Resulting code:
 
 	<p class="line_split">
-	  <span class="line1">Are you</span>
-	  <span class="line2">ready to</span>
-	  <span class="line3">RUMmMmMMBBLE!</span>
+	  <span class="line1 lineAreyou">Are you</span>
+	  <span class="line2 linereadyto">ready to</span>
+	  <span class="line3 lineRUMmMmMMBBLE">RUMmMmMMBBLE!</span>
 	</p>
 
 As expected it uses the `.line#` ordinal pattern.  You'll also notice the `<br>`'s have been destructively ripped out.  In your CSS, you'll want to declare something like `.line_split span { display:block; }` if you need them to behave as a `<br>` element.
