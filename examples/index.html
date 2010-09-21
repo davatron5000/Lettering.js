@@ -1,103 +1,135 @@
-# Lettering.js, a jQuery plugin for radical Web Typography
-We developed a lightweight, easy to use Javascript `span` injector for radical Web Typography, we're calling it "Lettering Dot JS", and we're releasing it today for free over on Github. Let me demo it for you: `</stevejobs>`
+<!doctype html>  
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ --> 
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-## Individual Letter Control with Lettering.js
-We'll start with some really basic markup:
+  <title>Lettering.js Examples</title>
+  <meta name="description" content="A jQuery Plugin that allows you to style each individual letter and more.">
+  <meta name="author" content="Dave Rupert">
 
-	<h1 class="fancy_title">Some Title</h1>
+  <meta name="viewport" content="width=device-width; initial-scale=1.0">
+	<link rel="stylesheet" href="style.css" type="text/css" media="screen"></link>
 
-After including jQuery, [download and include the minified version of Lettering.js](http://github.com/davatron5000/Lettering.js/downloads), then a script block with the magical `.lettering()` method:
+	<style type="text/css" media="screen">
+		.demo {
+			padding: 50px;
+			border:1px solid #ccc;
+			font-weight:bold;
+			color: red;
+			background:#d0d0d0;
+			font-size:20px;
+			line-height:1.5;
+			text-align:center;
+		}
 
-	<script src="path/to/jquery-1.4.2.min.js"></script>
-	<script src="path/to/jquery.lettering.min.js"></script>
-	<script>
+		.demo h1 { font-size:72px;  text-transform:uppercase; margin-bottom:0px;}
+		.char2,
+		#demo2 .word2,
+		.line2 { color: orange; }
+		.char3,
+		.word3,
+		.line3 { color: yellow; }
+		.char4,
+		.line4 { color: blue; }
+		.char5 { color: green; }
+		.char6 { color: indigo; }
+		.char7 { color: violet; }
+	</style>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+  <script src="../jquery.lettering.js"></script>
+  <script>
 	$(document).ready(function() {
-	  $(".fancy_title").lettering();
-	});
-	</script>
+			$("#demo1 h1").lettering();
+			$("#demo2 h1").lettering('words');
+			$("#demo3 p").lettering('lines');
+			$("#demo4 h1").lettering('words').children("span").lettering();
+			$("#demo5 h1").lettering().children("span").css({'display':'inline-block', '-webkit-transform':'rotate(-25deg)'});
+		});
+  </script>
 
-The resulting code will churn your `.fancy_title` and output the following:
+</head>
 
-	<h1 class="fancy_title">
-	  <span class="char1">S</span>
-	  <span class="char2">o</span>
-	  <span class="char3">m</span>
-	  <span class="char4">e</span>
-	  <span class="char5"></span>
-	  <span class="char6">T</span>
-	  <span class="char7">i</span>
-	  <span class="char8">t</span>
-	  <span class="char9">l</span>
-	  <span class="char10">e</span>
-	</h1>
+<body>
 
-Magical. Now the text is easy to manipulate in your CSS using an ordinal `.char#` pattern.  This plugin assumes basic counting skills, but it's a pretty fast and easy way to get control over every letter.
+  <div id="container">
+	<header>
+			<h1 id="thebrand">Lettering.JS</h1>
+			<p>The following are some hokey examples of how you can implement LETTERING.JS.
+	</header>
 
-As you can imagine, it would be a pain in the ass to have all those `spans` littering your markup and a nightmare to maintain. If the client came by the next day and said that the SEO Expert demands that you have to change the title to "Cool Title", it'd just be a matter of changing the original clean markup to:
+	<article id="main">
+			<section id='lettering-demo'>
+				<h2>Letters</h2>
+				<h4>The HTML</h4>
+<pre><code>	&lt;div id=&quot;demo1&quot; class=&quot;demo&quot;&gt;
+&nbsp;&nbsp;&lt;h1&gt;Rainbow&lt;/h1&gt;
+&lt;/div&gt;
+</code></pre>
 
-	<h1 class="fancy_title">Cool Title</h1>
+<h4>The jQuery</h4>
+<pre><code>$(document).ready(function() {
+&nbsp;&nbsp;$("#demo1 h1").lettering();
+});
+</code></pre>
 
-It also plays nicely with CMSs like WordPress or Expression Engine and art direction plugins.
+				<h4>The Result</h4>
+				<div id="demo1" class="demo">
+					<h1>Rainbow</h1>
+				</div>
 
-## Wrap Words with Lettering.js
-Once we developed this e-solution and played with it, we found it useful enough to broaden the scope so that we could break apart and wrap words in a sentence in a span tag.
+			</section>
 
-Here's an example of the `.lettering('words')` method:
+			<section id='words-demo'>
+				<h2>Words</h2>
+				<code><pre>$("#demo2 h1").lettering('words');</pre></code>
 
-	<p class="word_split">Don't break my heart.</p>
+			<h4>The Result</h4>
+				<div id="demo2" class="demo">
+					<h1>Hi, Multi Color</h1>
+				</div>
+			</section>
 
-	<script>
-	$(document).ready(function() {
-	  $(".word_split").lettering('words');
-	});
-	</script>
+			<section id='lines-demo'>
+				<h2>Lines</h2>
+				<code><pre>$("#demo3 p").lettering('lines');</pre></code>
 
-Which will generate:
+			<h4>The Result</h4>
+				<div id="demo3" class="demo">
+					<p>This is an amazing<br/> Revolution in Typography. <br/> The possibilities are endless: <br/> Coloring, Vertical spacing, and Kerning.</p>
+				</div>
+			</section>
 
-	<p class="word_split">
-	  <span class="word1">Don't</span>
-	  <span class="word2">break</span>
-	  <span class="word3">my</span>
-	  <span class="word4">heart.</span>
-	</p>
+			<section id='advanced1-demo'>
+				<h2>Advanced #1: Chaining 2 Methods</h2>
+<code><pre>$("#demo4 h1").lettering('words').children("span").lettering();</pre></code>
+			<h4>The Result</h4>
+				<div id="demo4" class="demo">
+					<h1>Double Rainbow</h1>
+				</div>
+			</section>
 
-You can then style each word using the `.word#` class.
+			<section id='advanced2-demo'>
+				<h2>Advanced #2: Chaining and Styling</h2>
+<code><pre>$("#demo5 h1").lettering()
+	.children("span").css({'display':'inline-block', '-webkit-transform':'rotate(-25deg)'});</pre></code>
+			<h4>The Result</h4>
+				<div id="demo5" class="demo">
+					<h1>WOOOoo!</h1>
+				</div>
+			</section>
 
-## Wrap Lines with Lettering.js
-Once word wrapping was complete, we noticed the need for yet another method, one that would break lines up mid-sentence.  We struggled for a semantic way to do this, but then remembered `<br>` tag which a semantic way to say "break this line".  Similar to the above examples where lines of text are broken up by either non-breaking spaces or individual letters, the `lettering('lines')` method will create breakpoints at `<br>` tags:
+	</article>
 
-	<p class="line_split">Are you<br/> ready to<br/> RUMmMmMMBBLE!</p>
+	<footer>
+			<p>&copy;2010 Dave Rupert <a href="http://daverupert.com">http://daverupert.com</a>
+	</footer>
+  </div> 
 
-	<script>
-	$(document).ready(function() {
-	  $(".line_split").lettering('lines');
-	});
-	</script>
-
-Resulting code:
-
-	<p class="line_split">
-	  <span class="line1">Are you</span>
-	  <span class="line2">ready to</span>
-	  <span class="line3">RUMmMmMMBBLE!</span>
-	</p>
-
-As expected it uses the `.line#` ordinal pattern.  You'll also notice the `<br>`'s have been destructively ripped out.  In your CSS, you'll want to declare something like `.line_split span { display:block; }` if you need them to behave as a `<br>` element.
-
-## Best Practices &amp; Kerning
-We've found this to be a pretty quick and elegant solution to create typographical CSS3 posters. It's also a great solution for really custom type headings, while keeping the text selectable.
-
-### Best Practices
-Be smart and use sparingly. You'll probably break your browser if you try to wrap every letter on your page in a `span` tag, so don't do that.  Look to use this in your Headings, Blockquotes, Asides, etc.
-
-### Kern Well
-If you're going through the trouble to load a fancy font and that word or phrase is the largest on the site, then it's important for it to be kerned well.  With Lettering.js, kerning is a breeze. You can simply use `$("#id-of-what-i-want-to-kern").lettering();` and then on each `.char#`, you can set relative position or left/right margin. Works like a charm.
-
-### Non-Javascript Fallback
-As with any kind of Javascript, have a fall back plan in case the user doesn't have javascript enabled.  The bottom line is up to you, my bottom line would be "legible and on the screen". Also, use `lettering.min.js` [Download the Minified Version of Lettering.js here](http://github.com/davatron5000/Lettering.js/downloads)
-
-### Performance Anti-Pattern
-Web performance patterns advise that you put Javascripts at the bottom of your page before your `</body>` tag.  There is an unfortunate side effect where you may experiences a [FOUT (Flash of Unstyled Text)](http://paulirish.com/2009/fighting-the-font-face-fout/) when you're manipulating your text after the DOM has loaded.  Unfortunately, we found the best solution to avoid/minimize the FOUT caused by this plugin is to put your scripts (jQuery, Lettering.js) in the document `<head>`. On the one hand, your page will load slower. On the other hand, a flash/restyling makes your site feel slow. Users might ultimately feel the site is faster if they don't see the FOUT.
-
-## Download, Fork, Commit, Please.
-We really want Lettering.js to be a quality helper for web typography.  If you have any feedback or suggestions, please leave those over on the Github.  We're excited about typography on the web and want to help make it print quality.
+</body>
+</html>

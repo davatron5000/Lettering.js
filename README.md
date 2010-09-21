@@ -7,33 +7,31 @@ We'll start with some really basic markup:
 	<h1 class="fancy_title">Some Title</h1>
 
 After including jQuery, [download and include the minified version of Lettering.js](http://github.com/davatron5000/Lettering.js/downloads), then a script block with the magical `.lettering()` method:
-	
+
 	<script src="path/to/jquery-1.4.2.min.js"></script>
 	<script src="path/to/jquery.lettering.min.js"></script>
 	<script>
 	$(document).ready(function() {
-	  $(".fancy_title").lettering();
+	  $(".fancy_title").lettering();
 	});
 	</script>
-	
+
 The resulting code will churn your `.fancy_title` and output the following:
 
 	<h1 class="fancy_title">
-	  <span class="char1 char-S">S</span>
-	  <span class="char2 char-o">o</span>
-	  <span class="char3 char-m">m</span>
-	  <span class="char4 char-e">e</span>
-	  <span class="char5 char-32"> </span>
-	  <span class="char6 char-T">T</span>
-	  <span class="char7 char-i">i</span>
-	  <span class="char8 char-t">t</span>
-	  <span class="char9 char-l">l</span>
-	  <span class="char10 char-e">e</span>
+	  <span class="char1">S</span>
+	  <span class="char2">o</span>
+	  <span class="char3">m</span>
+	  <span class="char4">e</span>
+	  <span class="char5"></span>
+	  <span class="char6">T</span>
+	  <span class="char7">i</span>
+	  <span class="char8">t</span>
+	  <span class="char9">l</span>
+	  <span class="char10">e</span>
 	</h1>
 
 Magical. Now the text is easy to manipulate in your CSS using an ordinal `.char#` pattern.  This plugin assumes basic counting skills, but it's a pretty fast and easy way to get control over every letter.
-
-You get further control from classes based on the actual letter for character styling. As you can see in the example above `.charS` allows you to style the letter `s`. __Please Note:__ class names are case-insensitive.
 
 As you can imagine, it would be a pain in the ass to have all those `spans` littering your markup and a nightmare to maintain. If the client came by the next day and said that the SEO Expert demands that you have to change the title to "Cool Title", it'd just be a matter of changing the original clean markup to:
 
@@ -50,17 +48,17 @@ Here's an example of the `.lettering('words')` method:
 
 	<script>
 	$(document).ready(function() {
-	  $(".word_split").lettering('words');
+	  $(".word_split").lettering('words');
 	});
 	</script>
 
 Which will generate:
 
 	<p class="word_split">
-	  <span class="word1 word-Don39t">Don't</span>
-	  <span class="word2 word-break">break</span>
-	  <span class="word3 word-my">my</span>
-	  <span class="word4 word-heart46">heart.</span>
+	  <span class="word1">Don't</span>
+	  <span class="word2">break</span>
+	  <span class="word3">my</span>
+	  <span class="word4">heart.</span>
 	</p>
 
 You can then style each word using the `.word#` class.
@@ -72,16 +70,16 @@ Once word wrapping was complete, we noticed the need for yet another method, one
 
 	<script>
 	$(document).ready(function() {
-	  $(".line_split").lettering('lines');
+	  $(".line_split").lettering('lines');
 	});
 	</script>
 
 Resulting code:
 
 	<p class="line_split">
-	  <span class="line1 line-Are32you">Are you</span>
-	  <span class="line2 line-ready32to">ready to</span>
-	  <span class="line3 line-RUMmMmMMBBLE34">RUMmMmMMBBLE!</span>
+	  <span class="line1">Are you</span>
+	  <span class="line2">ready to</span>
+	  <span class="line3">RUMmMmMMBBLE!</span>
 	</p>
 
 As expected it uses the `.line#` ordinal pattern.  You'll also notice the `<br>`'s have been destructively ripped out.  In your CSS, you'll want to declare something like `.line_split span { display:block; }` if you need them to behave as a `<br>` element.
