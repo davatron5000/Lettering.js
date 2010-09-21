@@ -19,16 +19,16 @@ After including jQuery, [download and include the minified version of Lettering.
 The resulting code will churn your `.fancy_title` and output the following:
 
 	<h1 class="fancy_title">
-	  <span class="char1 charS">S</span>
-	  <span class="char2 charo">o</span>
-	  <span class="char3 charm">m</span>
-	  <span class="char4 chare">e</span>
-	  <span class="char5 char_"> </span>
-	  <span class="char6 charT">T</span>
-	  <span class="char7 chari">i</span>
-	  <span class="char8 chart">t</span>
-	  <span class="char9 chal">l</span>
-	  <span class="char10 chare">e</span>
+	  <span class="char1 char-S">S</span>
+	  <span class="char2 char-o">o</span>
+	  <span class="char3 char-m">m</span>
+	  <span class="char4 char-e">e</span>
+	  <span class="char5 char-32"> </span>
+	  <span class="char6 char-T">T</span>
+	  <span class="char7 char-i">i</span>
+	  <span class="char8 char-t">t</span>
+	  <span class="char9 char-l">l</span>
+	  <span class="char10 char-e">e</span>
 	</h1>
 
 Magical. Now the text is easy to manipulate in your CSS using an ordinal `.char#` pattern.  This plugin assumes basic counting skills, but it's a pretty fast and easy way to get control over every letter.
@@ -57,10 +57,10 @@ Here's an example of the `.lettering('words')` method:
 Which will generate:
 
 	<p class="word_split">
-	  <span class="word1 wordDont">Don't</span>
-	  <span class="word2 wordbreak">break</span>
-	  <span class="word3 wordmy">my</span>
-	  <span class="word4 wordheart">heart.</span>
+	  <span class="word1 word-Don39t">Don't</span>
+	  <span class="word2 word-break">break</span>
+	  <span class="word3 word-my">my</span>
+	  <span class="word4 word-heart46">heart.</span>
 	</p>
 
 You can then style each word using the `.word#` class.
@@ -79,9 +79,9 @@ Once word wrapping was complete, we noticed the need for yet another method, one
 Resulting code:
 
 	<p class="line_split">
-	  <span class="line1 lineAreyou">Are you</span>
-	  <span class="line2 linereadyto">ready to</span>
-	  <span class="line3 lineRUMmMmMMBBLE">RUMmMmMMBBLE!</span>
+	  <span class="line1 line-Are32you">Are you</span>
+	  <span class="line2 line-ready32to">ready to</span>
+	  <span class="line3 line-RUMmMmMMBBLE34">RUMmMmMMBBLE!</span>
 	</p>
 
 As expected it uses the `.line#` ordinal pattern.  You'll also notice the `<br>`'s have been destructively ripped out.  In your CSS, you'll want to declare something like `.line_split span { display:block; }` if you need them to behave as a `<br>` element.
@@ -90,7 +90,7 @@ As expected it uses the `.line#` ordinal pattern.  You'll also notice the `<br>`
 We've found this to be a pretty quick and elegant solution to create typographical CSS3 posters. It's also a great solution for really custom type headings, while keeping the text selectable.
 
 ### Best Practices
-Be smart and use sparingly. You'll probably break your browser if you try to tried to do wrap every letter on your page in a `span` tag, so don't do that.  Look to use this in your Headings, Blockquotes, Asides, etc.
+Be smart and use sparingly. You'll probably break your browser if you try to wrap every letter on your page in a `span` tag, so don't do that.  Look to use this in your Headings, Blockquotes, Asides, etc.
 
 ### Kern Well
 If you're going through the trouble to load a fancy font and that word or phrase is the largest on the site, then it's important for it to be kerned well.  With Lettering.js, kerning is a breeze. You can simply use `$("#id-of-what-i-want-to-kern").lettering();` and then on each `.char#`, you can set relative position or left/right margin. Works like a charm.
