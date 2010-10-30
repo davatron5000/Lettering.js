@@ -20,26 +20,18 @@
 			t.empty().append(inject);
 		}
 	}
-	
 	var methods = {
 		init : function() {
-
 			return this.each(function() {
 				injector($(this), '', 'char', '');
 			});
-
 		},
-
 		words : function() {
-
 			return this.each(function() {
-				injector($(this), ' ', 'word', ' ');
+				injector($(this), /\s+/, 'word', ' ');
 			});
-
 		},
-		
 		lines : function() {
-
 			return this.each(function() {
 				var r = "eefec303079ad17405c889e092e105b0";
 				// Because it's hard to split a <br/> tag consistently across browsers,
