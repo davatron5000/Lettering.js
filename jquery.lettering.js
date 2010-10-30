@@ -11,14 +11,15 @@
 * Optimized by Már Örlygsson - http://mar.anomy.net/
 */
 (function($){
-	var injector = function (c, splitter, klass, after) {
+	var injector = function (c, splitter, klass, after, addContent) {
 		c.each(function(){
 			var t = $(this),
 			    a = t.text().split(splitter),
 			    inject = '';
 			if (a.length) {
 				$(a).each(function(i, item) {
-					inject += '<span class="'+klass+(i+1)+'">'+item+'</span>'+after;
+					var contentAttr = addContent ? ' data-chr="'+item+'"' : '';
+					inject += '<span class="'+klass+(i+1)+'"'+contentAttr+'>'+item+'</span>'+after;
 				});	
 				t.html(inject);
 			}
@@ -27,6 +28,9 @@
 	var methods = {
 		letters : function ( t ) {
 			injector( t, '', 'char', '' );
+		},
+		kern : function ( t ) {
+			injector( t, '', 'char char', '', true );
 		},
 		words : function( t ) {
 			injector( t, /\s+/, 'word', ' ' );

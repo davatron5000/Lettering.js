@@ -23,7 +23,7 @@ The resulting code will churn your `.fancy_title` and output the following:
 	  <span class="char2">o</span>
 	  <span class="char3">m</span>
 	  <span class="char4">e</span>
-	  <span class="char5"></span>
+	  <span class="char5"> </span>
 	  <span class="char6">T</span>
 	  <span class="char7">i</span>
 	  <span class="char8">t</span>
@@ -38,6 +38,38 @@ As you can imagine, it would be a pain in the ass to have all those `spans` litt
 	<h1 class="fancy_title">Cool Title</h1>
 
 It also plays nicely with CMSs like WordPress or Expression Engine and art direction plugins.
+
+## Kern letter-pairs with Lettering.js
+
+For more seriouse (and more generic) letter-pair kerning, you might wish to use the `.lettering('kern')` method:
+
+	<script>
+	$(document).ready(function() {
+	  $(".fancy_title").lettering('kern');
+	});
+	</script>
+
+It outputs the following:
+
+	<h1 class="fancy_title">
+	  <span class="char char1" data-chr="S">S</span>
+	  <span class="char char2" data-chr="o">o</span>
+	  <span class="char char3" data-chr="m">m</span>
+	  <span class="char char4" data-chr="e">e</span>
+	  <span class="char char5" data-chr=" "> </span>
+	  <span class="char char6" data-chr="T">T</span>
+	  <span class="char char7" data-chr="i">i</span>
+	  <span class="char char8" data-chr="t">t</span>
+	  <span class="char char9" data-chr="l">l</span>
+	  <span class="char char10" data-chr="e">e</span>
+	</h1>
+
+Which allows you to write generic CSS rules to kern certain letter-pairs, like so:
+
+	<style type="text/css">
+	  .char[data-chr="T"] + .char[data-chr="i"] { margin-left: -.17em }
+	</script>
+
 
 ## Wrap Words with Lettering.js
 Once we developed this e-solution and played with it, we found it useful enough to broaden the scope so that we could break apart and wrap words in a sentence in a span tag.
