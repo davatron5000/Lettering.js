@@ -18,7 +18,7 @@
 			    inject = '';
 			if (a.length) {
 				$(a).each(function(i, item) {
-					var contentAttr = addContent ? ' data-chr="'+item+'"' : '';
+					var contentAttr = addContent ? ' data-chr="'+(item=='"'?'&quot;':item)+'"' : '';
 					inject += '<span class="'+klass+(i+1)+'"'+contentAttr+'>'+item+'</span>'+after;
 				});	
 				t.html(inject);
