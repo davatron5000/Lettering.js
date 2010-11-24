@@ -1,29 +1,29 @@
 // encoding: utf-8
 // ----------------------------------------------------------------------------------
-// jQuery.fn.letterings v 1.0
+// jQuery.fn.lettering v 1.0
 // ----------------------------------------------------------------------------------
 // (c) 2010 Már Örlygsson -- http://mar.anomy.net
 // ----------------------------------------------------------------------------------
+// An almost completely rewritten fork off Dave Rupert's original plugin
+// http://daverupert.com/2010/09/lettering-js/
 //
 // Dual licensed under a MIT licence (http://en.wikipedia.org/wiki/MIT_License)
 // and GPL 2.0 or above (http://www.gnu.org/licenses/old-licenses/gpl-2.0.html).
 //
-// An almost completely rewritten fork off Dave Rupert's original plugin
-// http://daverupert.com/2010/09/lettering-js/
 //
 //
 // Requires: jQuery 1.2.6+
 //
 //
 // Usage:
-//   jQuery('p').letterings();                         // defaults to the 'letters' preset
-//   jQuery('p').letterings( methodName );             // falls back to 'letters' for undefined methodNames (presets)
-//   jQuery('p').letterings( methodName, extraOpts );  // using a preset but mixing it with some extraOtions
-//   jQuery('p').letterings( options );                // using custom options
+//   jQuery('p').lettering();                         // defaults to the 'letters' preset
+//   jQuery('p').lettering( methodName );             // falls back to 'letters' for undefined methodNames (presets)
+//   jQuery('p').lettering( methodName, extraOpts );  // using a preset but mixing it with some extraOtions
+//   jQuery('p').lettering( options );                // using custom options
 //
 //
 // The default options:
-//  jQuery.fn.letterings.defaults = {
+//  jQuery.fn.lettering.defaults = {
 //        split:   '',          // String or RegExp to split the original element's text on. Defaults to ('') single character splits.
 //        prep:    undefined,   // (Example: `function ( elm ){ var cfg = this; /*...*/ }`) Function that gets run before the injector function is run
 //        addAttr: false,       // Specifies whether to set each element's content as data-cont="" attribute (allows letter-pair-based kerning, for example)
@@ -44,7 +44,7 @@
 //
 (function($){
 
-  var letterings = $.fn.lettering = function ( presetName, extraCfg ) {
+  var lettering = $.fn.lettering = function ( presetName, extraCfg ) {
           //cfg = $.extend({}, defaults, (typeof cfg != 'string' ? cfg : (presets[cfg]||presets.letters)) );
           var cfg = $.extend({}, defaults, presets[presetName]||presetName||presets.letters, extraCfg );  // in praxis this behaves the same as the above line ... trades mess for compactness.
           return this.each(function(){
@@ -96,7 +96,7 @@
           newHtml.length  &&  $(node)[cfg.split?'html':'replaceWith']( newHtml.reverse().join('') );
         },
 
-      presets = letterings.presets = {
+      presets = lettering.presets = {
           letters: {},
           kern:    {  addAttr: !0/*true*/,  num:!1/*false*/  },
           words:   {  split: /\s+/,  cl: 'word',  after: ' '  },
@@ -110,7 +110,7 @@
             }
         },
 
-      defaults = letterings.defaults = {
+      defaults = lettering.defaults = {
           //split: '',
           //prep:    undefined,   // function ( elm ){ var cfg = this; /*...*/ },
           //addAttr: false,
