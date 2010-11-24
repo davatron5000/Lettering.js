@@ -48,7 +48,7 @@
           //cfg = $.extend({}, defaults, (typeof cfg != 'string' ? cfg : (presets[cfg]||presets.letters)) );
           var cfg = $.extend({}, defaults, presets[presetName]||presetName||presets.letters, extraCfg );  // in praxis this behaves the same as the above line ... trades mess for compactness.
           return this.each(function(){
-              cfg.prep && cfg.prep( this )
+              cfg.prep && cfg.prep( this );
               injector.call(this, cfg );
               if ( cfg.num )
               {
