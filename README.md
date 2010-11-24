@@ -19,16 +19,16 @@ After including jQuery, [download and include the minified version of Lettering.
 The resulting code will churn your `.fancy_title` and output the following:
 
 	<h1 class="fancy_title">
-	  <span class="char1">S</span>
-	  <span class="char2">o</span>
-	  <span class="char3">m</span>
-	  <span class="char4">e</span>
-	  <span class="char5"> </span>
-	  <span class="char6">T</span>
-	  <span class="char7">i</span>
-	  <span class="char8">t</span>
-	  <span class="char9">l</span>
-	  <span class="char10">e</span>
+	  <span class="char char1">S</span>
+	  <span class="char char2">o</span>
+	  <span class="char char3">m</span>
+	  <span class="char char4">e</span>
+	  <span class="char char5"> </span>
+	  <span class="char char6">T</span>
+	  <span class="char char7">i</span>
+	  <span class="char char8">t</span>
+	  <span class="char char9">l</span>
+	  <span class="char char10">e</span>
 	</h1>
 
 Magical. Now the text is easy to manipulate in your CSS using an ordinal `.char#` pattern.  This plugin assumes basic counting skills, but it's a pretty fast and easy way to get control over every letter.
@@ -52,16 +52,16 @@ For more seriouse (and more generic) letter-pair kerning, you might wish to use 
 It outputs the following:
 
 	<h1 class="fancy_title">
-	  <span class="char char1" data-chr="S">S</span>
-	  <span class="char char2" data-chr="o">o</span>
-	  <span class="char char3" data-chr="m">m</span>
-	  <span class="char char4" data-chr="e">e</span>
-	  <span class="char char5" data-chr=" "> </span>
-	  <span class="char char6" data-chr="T">T</span>
-	  <span class="char char7" data-chr="i">i</span>
-	  <span class="char char8" data-chr="t">t</span>
-	  <span class="char char9" data-chr="l">l</span>
-	  <span class="char char10" data-chr="e">e</span>
+	  <span class="char" data-chr="S">S</span>
+	  <span class="char" data-chr="o">o</span>
+	  <span class="char" data-chr="m">m</span>
+	  <span class="char" data-chr="e">e</span>
+	  <span class="char" data-chr=" "> </span>
+	  <span class="char" data-chr="T">T</span>
+	  <span class="char" data-chr="i">i</span>
+	  <span class="char" data-chr="t">t</span>
+	  <span class="char" data-chr="l">l</span>
+	  <span class="char" data-chr="e">e</span>
 	</h1>
 
 Which allows you to write generic CSS rules to kern certain letter-pairs, like so:
@@ -87,10 +87,10 @@ Here's an example of the `.lettering('words')` method:
 Which will generate:
 
 	<p class="word_split">
-	  <span class="word1">Don't</span>
-	  <span class="word2">break</span>
-	  <span class="word3">my</span>
-	  <span class="word4">heart.</span>
+	  <span class="word word1">Don't</span>
+	  <span class="word word2">break</span>
+	  <span class="word word3">my</span>
+	  <span class="word word4">heart.</span>
 	</p>
 
 You can then style each word using the `.word#` class.
@@ -109,12 +109,12 @@ Once word wrapping was complete, we noticed the need for yet another method, one
 Resulting code:
 
 	<p class="line_split">
-	  <span class="line1">Are you</span>
-	  <span class="line2">ready to</span>
-	  <span class="line3">RUMmMmMMBBLE!</span>
+	  <span class="line line1">Are you</span>
+	  <span class="line line2">ready to</span>
+	  <span class="line line3">RUMmMmMMBBLE!</span>
 	</p>
 
-As expected it uses the `.line#` ordinal pattern.  You'll also notice the `<br>`'s have been destructively ripped out.  In your CSS, you'll want to declare something like `.line_split span { display:block; }` if you need them to behave as a `<br>` element.
+As expected it uses the `.line#` ordinal pattern.  You'll also notice the `<br/>`'s have been destructively ripped out.  In your CSS, you'll want to declare something like `.line_split span { display:block; }` if you need them to behave as a `<br>` element.
 
 ## Best Practices &amp; Kerning
 We've found this to be a pretty quick and elegant solution to create typographical CSS3 posters. It's also a great solution for really custom type headings, while keeping the text selectable.

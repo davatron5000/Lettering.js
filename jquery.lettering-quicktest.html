@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="is">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <title>jQuery.lettering tests</title>
+  <style type="text/css">
+    p.test {
+      font-size: 2em;
+      background: #eee;
+      width: 11em;
+      padding: 5px 10px;
+    }
+
+    .char {
+      border: 1px solid #9d9;
+      border-right: none;
+    }
+    .char:last-child {
+      border-right: 1px solid #9d9;
+    }
+    .char[data-cont="a"] + .char[data-cont="e"] { margin-left: -.17em;  border-left: none; }
+    .char[data-cont="f"] + .char[data-cont="i"],
+    .char[data-cont="f"] + .char[data-cont="l"] { margin-left: -.08em;  border-left: none; }
+
+    .word {
+      border: 1px solid #9ce;
+    }
+
+    .line {
+      border: 1px solid #f99;
+      display: block;
+    }
+
+  </style>  
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js"></script>
+  <script src="jquery.lettering.js"></script>
+  <script>
+    jQuery(function($){
+    
+      $('#t0').lettering();
+      $('#t1').lettering('letters');
+      $('#t2').lettering('kern');
+      $('#t3').lettering('words');
+      $('#t4').lettering('lines');
+
+    });
+  </script>
+
+</head>
+<body>
+  <h1>jQuery.lettering tests</h1>
+
+  <p class="test" id="t0">Le<b>tter <em><s>met</s>hod</em></b></p>
+  <p class="test" id="t1">Le<b>tter <em><s>met</s>hod</em></b></p>
+  <p class="test" id="t2">Kern method fiflae</p>
+  <p class="test" id="t3">Word method <strong>(destructive)</strong></p>
+  <p class="test" id="t4">Line<br/> method <br/>fiflae <br /> <strong>(destructive)</strong></p>
+
+</body>
+</html>
