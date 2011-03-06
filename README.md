@@ -35,7 +35,7 @@ Magical. Now the text is easy to manipulate in your CSS using an ordinal `.char#
 
 There you have it, but Lettering.js does even more!  If you want more information on how you can get radical with text, please read the Lettering.js Wiki
 
-[[https://github.com/davatron5000/Lettering.js/wiki]]
+[https://github.com/davatron5000/Lettering.js/wiki](https://github.com/davatron5000/Lettering.js/wiki)
 
 If you have an idea for the wiki, file an issue and we'll try and write something up.
 
