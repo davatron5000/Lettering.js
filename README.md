@@ -8,12 +8,10 @@ We'll start with some really basic markup:
 
 After including jQuery, [download and include the minified version of Lettering.js](http://github.com/davatron5000/Lettering.js/downloads), then a script block with the magical `.lettering()` method:
 	
-	<script src="path/to/jquery-1.4.2.min.js"></script>
-	<script src="path/to/jquery.lettering.min.js"></script>
 	<script>
-	$(document).ready(function() {
-	  $(".fancy_title").lettering();
-	});
+	  $(document).ready(function() {
+	    $(".fancy_title").lettering();
+	  });
 	</script>
 	
 The resulting code will churn your `.fancy_title` and output the following:
@@ -33,56 +31,13 @@ The resulting code will churn your `.fancy_title` and output the following:
 
 Magical. Now the text is easy to manipulate in your CSS using an ordinal `.char#` pattern.  This plugin assumes basic counting skills, but it's a pretty fast and easy way to get control over every letter.
 
-As you can imagine, it would be a pain in the ass to have all those `spans` littering your markup and a nightmare to maintain. If the client came by the next day and said that the SEO Expert demands that you have to change the title to "Cool Title", it'd just be a matter of changing the original clean markup to:
+## Consult the Wiki, Pls
 
-	<h1 class="fancy_title">Cool Title</h1>
+There you have it, but Lettering.js does even more!  If you want more information on how you can get radical with text, please read the Lettering.js Wiki
 
-It also plays nicely with CMSs like WordPress or Expression Engine and art direction plugins.
+[[https://github.com/davatron5000/Lettering.js/wiki]]
 
-## Wrap Words with Lettering.js
-Once we developed this e-solution and played with it, we found it useful enough to broaden the scope so that we could break apart and wrap words in a sentence in a span tag.
-
-Here's an example of the `.lettering('words')` method:
-
-	<p class="word_split">Don't break my heart.</p>
-
-	<script>
-	$(document).ready(function() {
-	  $(".word_split").lettering('words');
-	});
-	</script>
-
-Which will generate:
-
-	<p class="word_split">
-	  <span class="word1">Don't</span>
-	  <span class="word2">break</span>
-	  <span class="word3">my</span>
-	  <span class="word4">heart.</span>
-	</p>
-
-You can then style each word using the `.word#` class.
-
-## Wrap Lines with Lettering.js
-Once word wrapping was complete, we noticed the need for yet another method, one that would break lines up mid-sentence.  We struggled for a semantic way to do this, but then remembered `<br>` tag which a semantic way to say "break this line".  Similar to the above examples where lines of text are broken up by either non-breaking spaces or individual letters, the `lettering('lines')` method will create breakpoints at `<br>` tags:
-
-	<p class="line_split">Are you<br/> ready to<br/> RUMmMmMMBBLE!</p>
-
-	<script>
-	$(document).ready(function() {
-	  $(".line_split").lettering('lines');
-	});
-	</script>
-
-Resulting code:
-
-	<p class="line_split">
-	  <span class="line1">Are you</span>
-	  <span class="line2">ready to</span>
-	  <span class="line3">RUMmMmMMBBLE!</span>
-	</p>
-
-As expected it uses the `.line#` ordinal pattern.  You'll also notice the `<br>`'s have been destructively ripped out.  In your CSS, you'll want to declare something like `.line_split span { display:block; }` if you need them to behave as a `<br>` element.
+If you have an idea for the wiki, file an issue and we'll try and write something up.
 
 ## Best Practices &amp; Kerning
 We've found this to be a pretty quick and elegant solution to create typographical CSS3 posters. It's also a great solution for really custom type headings, while keeping the text selectable.
