@@ -7,13 +7,13 @@ We'll start with some really basic markup:
 	<h1 class="fancy_title">Some Title</h1>
 
 After including jQuery, [download and include the minified version of Lettering.js](http://github.com/davatron5000/Lettering.js/downloads), then a script block with the magical `.lettering()` method:
-	
+
 	<script>
 	  $(document).ready(function() {
 	    $(".fancy_title").lettering();
 	  });
 	</script>
-	
+
 The resulting code will churn your `.fancy_title` and output the following:
 
 	<h1 class="fancy_title">
