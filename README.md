@@ -17,19 +17,21 @@ After including jQuery, [download and include the minified version of Lettering.
 The resulting code will churn your `.fancy_title` and output the following:
 
 	<h1 class="fancy_title">
-	  <span class="char1">S</span>
-	  <span class="char2">o</span>
-	  <span class="char3">m</span>
-	  <span class="char4">e</span>
-	  <span class="char5"></span>
-	  <span class="char6">T</span>
-	  <span class="char7">i</span>
-	  <span class="char8">t</span>
-	  <span class="char9">l</span>
-	  <span class="char10">e</span>
+	  <span class="char-s char1">S</span>
+	  <span class="char-o char2">o</span>
+	  <span class="char-m char3">m</span>
+	  <span class="char-e char4">e</span>
+	  <span class="char-u20 char5"> </span>
+	  <span class="char-t char6">T</span>
+	  <span class="char-i char7">i</span>
+	  <span class="char-t char8">t</span>
+	  <span class="char-l char9">l</span>
+	  <span class="char-e char10">e</span>
 	</h1>
 
-Magical. Now the text is easy to manipulate in your CSS using an ordinal `.char#` pattern.  This plugin assumes basic counting skills, but it's a pretty fast and easy way to get control over every letter.
+Magical. Now the text is easy to manipulate in your CSS using an ordinal `.char#` or alpha-numeric `.char-x` pattern.  This plugin assumes basic counting and reading skills, but it's a pretty fast and easy way to get control over every letter.
+
+Special cases such as unicode characters or spaces are URL-escaped and the % sign replaced with a `u` so a space has the class `.char-u20` and an ampersand will have the class `.char-u26`.
 
 ## Consult the Wiki, Pls
 
