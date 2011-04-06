@@ -8,7 +8,7 @@
 *
 * Thanks to Paul Irish - http://paulirish.com - for the feedback.
 *
-* Regexified, configurablified & deloopified by Robert O'Rourke - http://sanchothefat.com
+* Regexified, classinated, configurablised & deloopified by Robert O'Rourke - http://sanchothefat.com
 *
 * Date: Tue Apr 5 10:00:00 2011
 */
@@ -19,12 +19,12 @@
 			inject = t.text().replace(opts.rgxp, function(){
 				c = [];
 				if ( opts.classes.klass ) c.push(opts.klass);
-				if ( opts.classes.text  ) c.push(opts.klass + '-' + escape( arguments[1].toLowerCase() ).replace('%','u') ); // sanitise for class name
+				if ( opts.classes.text  ) c.push(opts.klass + '-' + escape( arguments[1] ).replace('%','u') ); // sanitise for class name
 				if ( opts.classes.num   ) c.push(opts.klass + ++i);
 				return '<span class="' + c.join(' ') + '">'+ arguments[1] +'</span>';
 			});
 		t.html( inject );
-    }
+	}
 
 	var methods = {
 		letters : function( options ) {
