@@ -136,6 +136,34 @@
 					<h1>WOOOoo!</h1>
 				</div>
 			</section>
+			
+			<section id='advanced2-demo'>
+				<h2>Advanced #3: The options object</h2>
+<pre><code>$("#demo6 h1").lettering({
+    rgxp: /([abcedfg])/gim,
+    klass: 'letter',
+    classes: { klass: true, text: true, num: true }
+});</code></pre>
+			<p>The options object can be passed to any method and has 3 properties:</p>
+			<dl>
+			  <dt>rgxp</dt>
+			  <dd><strong>Regular Expression</strong><br />
+			    The first capturing parentheses determine what text gets wrapped in spans. You can customise it if desired, in the example above only the letters a-g will be wrapped in spans.</dd>
+			  <dt>klass</dt>
+			  <dd><strong>String</strong><br />
+			    This is used as the base of the CSS class name used in the span. Use this if you run into conflicts with existing class names or just prefer something else.</dd>
+			  <dt>classes</dt>
+			  <dd><strong>Object</strong><br />
+			    An object with 3 properties that determine the CSS class names applied to the spans:
+			    <ul>
+			      <li>klass: <em>if true adds the plain base class name eg.</em> <code>&lt;span class="letter"&gt;</code></li>
+			      <li>text: <em>if true adds a class containing the matched text eg.</em> <code>&lt;span class="letter-a"&gt;</code></li>
+			      <li>num: <em>if true adds a class containing the numeric order of the letter eg.</em> <code>&lt;span class="letter3"&gt;</code></li>
+			    </ul>
+			    All the above together would give you a class name like this: <code>&lt;span class="letter letter-a letter3"&lt;</code>
+			    </dd>
+			</dl>
+			</section>
 
     </article>
 
