@@ -6,9 +6,10 @@
   <title>jQuery.lettering tests</title>
   <style type="text/css">
     p.test {
-      font-size: 2em;
+      font-family: Tahoma, Arial, sans-serif;
+      font-size: 1.5em;
       background: #eee;
-      width: 11em;
+      width: 14em;
       padding: 5px 10px;
     }
 
@@ -20,6 +21,7 @@
       border-right: 1px solid #9d9;
     }
     .char[data-cont="a"] + .char[data-cont="e"] { margin-left: -.17em;  border-left: none; }
+    .char[data-cont="r"] + .char[data-cont="n"],
     .char[data-cont="f"] + .char[data-cont="i"],
     .char[data-cont="f"] + .char[data-cont="l"] { margin-left: -.08em;  border-left: none; }
 
@@ -51,9 +53,9 @@
 <body>
   <h1>jQuery.lettering tests</h1>
 
-  <p class="test" id="t0">Le<b>tter <em><s>met</s>hod</em></b></p>
+  <p class="test" id="t0">Le<b>tter <em><s>met</s>hod</em></b> (default)</p>
   <p class="test" id="t1">Le<b>tter <em><s>met</s>hod</em></b></p>
-  <p class="test" id="t2">Kern method fiflae</p>
+  <p class="test" id="t2">Kern method fiflae - kerning</p>
   <p class="test" id="t3">Word method <strong>(destructive)</strong></p>
   <p class="test" id="t4">Line<br/> method <br/>fiflae <br /> <strong>(destructive)</strong></p>
 
