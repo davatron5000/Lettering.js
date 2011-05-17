@@ -60,11 +60,15 @@
 
       injector = function ( cfg, count ) {
           var node = this,
+              nodeType = node.nodeType,
               arr = cfg.split ?
+                        // NOTE: methods other than 'letters' and 'kern'
+                        // are destructive (i.e. they will kill nested markup)
+                        // See also: https://github.com/davatron5000/Lettering.js/issues/5#issuecomment-563679
                         $(node).text().split(cfg.split):
-                    node.nodeType == 3 ? // textNode
+                    nodeType == 3 ? // textNode
                         node.nodeValue.split(''):
-                    node.nodeType == 1 ? // Element
+                    nodeType == 1 ? // Element
                         node.childNodes:
                         [],
               contentAttr,
