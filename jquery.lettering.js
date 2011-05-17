@@ -58,7 +58,7 @@
             });
         },
 
-      injector = function ( cfg, count ) {
+      injector = function ( cfg ) {
           var node = this,
               nodeType = node.nodeType,
               arr = cfg.split ?
