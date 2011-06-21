@@ -1,52 +1,65 @@
 /*global jQuery */
-/*!	
-* Lettering.JS 0.6.1
+/*!
+* Lettering.JS 0.7
 *
 * Copyright 2010, Dave Rupert http://daverupert.com
-* Released under the WTFPL license 
+* Released under the WTFPL license
 * http://sam.zoy.org/wtfpl/
 *
 * Thanks to Paul Irish - http://paulirish.com - for the feedback.
 *
-* Date: Mon Sep 20 17:14:00 2010 -0600
+* Regexified, classinated, configurablised & deloopified by Robert O'Rourke - http://sanchothefat.com
+*
+* Date: Tue Apr 5 10:00:00 2011
 */
 (function($){
-	function injector(t, splitter, klass, after) {
-		var a = t.text().split(splitter), inject = '';
-		if (a.length) {
-			$(a).each(function(i, item) {
-				inject += '<span class="'+klass+(i+1)+'">'+item+'</span>'+after;
-			});	
-			t.empty().append(inject);
-		}
+	function injector(t, opts) {
+		var i = 0,
+			c = [],
+			inject = t.text().replace(opts.rgxp, function(){
+				c = [];
+				if ( opts.classes.klass ) c.push(opts.klass);
+				if ( opts.classes.text  ) c.push(opts.klass + '-' + escape( arguments[1] ).replace('%','u') ); // sanitise for class name
+				if ( opts.classes.num   ) c.push(opts.klass + ++i);
+				return '<span class="' + c.join(' ') + '">'+ arguments[1] +'</span>';
+			});
+		t.html( inject );
 	}
-	
+
 	var methods = {
-		init : function() {
+		letters : function( options ) {
 
 			return this.each(function() {
-				injector($(this), '', 'char', '');
+				injector( $(this), $.extend({ rgxp: /(.)/gim, klass: 'char', classes: { klass: false, text: true, num: true } }, options) );
 			});
 
 		},
 
-		words : function() {
+		words: function( options ) {
 
-			return this.each(function() {
-				injector($(this), ' ', 'word', ' ');
+			return this.each(function(){
+				injector( $(this), $.extend({ rgxp: /([^\s]+)/gim, klass: 'word', classes: { klass: false, text: true, num: true } }, options) );
 			});
 
 		},
-		
-		lines : function() {
+
+		lines : function( options ) {
 
 			return this.each(function() {
-				var r = "eefec303079ad17405c889e092e105b0";
 				// Because it's hard to split a <br/> tag consistently across browsers,
-				// (*ahem* IE *ahem*), we replaces all <br/> instances with an md5 hash 
-				// (of the word "split").  If you're trying to use this plugin on that 
+				// (*ahem* IE *ahem*), we replaces all <br/> instances with an md5 hash
+				// (of the word "split").  If you're trying to use this plugin on that
 				// md5 hash string, it will fail because you're being ridiculous.
-				injector($(this).children("br").replaceWith(r).end(), r, 'line', '');
+				injector( $(this).children("br").replaceWith('eefec303079ad17405c889e092e105b0').end(), $.extend({ rgxp: /\s*(.*?)\s*(eefec303079ad17405c889e092e105b0|$)/gim, klass: 'line', classes: { klass: false, text: false, num: true } }, options) );
+				$('span:last',this).remove(); // currently leaves a blank extra span at the end :|
+			});
+
+		},
+
+		dropcap: function( options ) {
+
+			return this.each(function(){
+				injector( $(this), $.extend({ rgxp: /^(\w)/im, klass: 'dropcap', classes: { klass: true, text: true, num: false } }, options) );
 			});
 
 		}
@@ -54,12 +67,13 @@
 
 	$.fn.lettering = function( method ) {
 		// Method calling logic
-		if ( method && methods[method] ) {
-			return methods[ method ].apply( this, [].slice.call( arguments, 1 ));
-		} else if ( method === 'letters' || ! method ) {
-			return methods.init.apply( this, [].slice.call( arguments, 0 ) ); // always pass an array
+		if ( methods[method] ) {
+			return methods[ method ].apply( this, Array.prototype.slice.call( arguments, 1 ));
+		} else if ( typeof method === 'object' || ! method ) {
+			return methods.letters.apply( this, arguments ); // default to letters method
+		} else {
+			$.error( 'Method ' +  method + ' does not exist on jQuery.lettering' );
 		}
-		$.error( 'Method ' +  method + ' does not exist on jQuery.lettering' );
 		return this;
 	};
 

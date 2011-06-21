@@ -146,6 +146,12 @@ section { margin-bottom: 4em; }
 
 p { margin-bottom:1.5em;}
 
+dt { font-size: 18px; }
+dd { margin: 0.5em 0 0.5em 80px; }
+
+ul { margin: 0.5em 0 0.5em 16px; }
+li { margin: 0 0 0.5em; }
+
 @media print {
   * { background: transparent !important; color: #444 !important; text-shadow: none !important; }
 

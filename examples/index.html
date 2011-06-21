@@ -1,5 +1,5 @@
-<!doctype html>  
-<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ --> 
+<!doctype html>
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
 <!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
 <!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
 <!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
@@ -15,7 +15,7 @@
 
   <meta name="viewport" content="width=device-width; initial-scale=1.0">
 	<link rel="stylesheet" href="style.css" type="text/css" media="screen"></link>
-	
+
 	<style type="text/css" media="screen">
 		.demo {
 			padding: 50px;
@@ -27,7 +27,7 @@
 			line-height:1.5;
 			text-align:center;
 		}
-	
+
 		.demo h1 { font-size:72px;  text-transform:uppercase; margin-bottom:0px;}
 		.char2,
 		#demo2 .word2,
@@ -40,6 +40,8 @@
 		.char5 { color: green; }
 		.char6 { color: indigo; }
 		.char7 { color: violet; }
+		#demo4 { text-align: left; }
+		.dropcap { font-size: 310%; float: left; line-height: 1; }
 	</style>
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
   <script src="../jquery.lettering.js"></script>
@@ -48,8 +50,9 @@
 			$("#demo1 h1").lettering();
 			$("#demo2 h1").lettering('words');
 			$("#demo3 p").lettering('lines');
-			$("#demo4 h1").lettering('words').children("span").lettering();
-			$("#demo5 h1").lettering().children("span").css({'display':'inline-block', '-webkit-transform':'rotate(-25deg)'});
+			$("#demo4 p").lettering('dropcap');
+			$("#demo5 h1").lettering('words').children("span").lettering();
+			$("#demo6 h1").lettering().children("span").css({'display':'inline-block', '-webkit-transform':'rotate(-25deg)'});
 		});
   </script>
 
@@ -62,7 +65,7 @@
 			<h1 id="thebrand">Lettering.JS</h1>
 			<p>The following are some hokey examples of how you can implement LETTERING.JS.
     </header>
-    
+
     <article id="main">
 			<section id='lettering-demo'>
 				<h2>Letters</h2>
@@ -82,7 +85,7 @@
 				<div id="demo1" class="demo">
 					<h1>Rainbow</h1>
 				</div>
-				
+
 			</section>
 
 			<section id='words-demo'>
@@ -105,31 +108,69 @@
 				</div>
 			</section>
 
-			<section id='advanced1-demo'>
-				<h2>Advanced #1: Chaining 2 Methods</h2>
-<code><pre>$("#demo4 h1").lettering('words').children("span").lettering();</pre></code>
+			<section id='dropcap-demo'>
+				<h2>Dropcap</h2>
+				<code><pre>$("#demo4 p").lettering('dropcap');</pre></code>
+
 			<h4>The Result</h4>
 				<div id="demo4" class="demo">
+					<p>This is an amazing revolution in Typography. The possibilities are endless: a whole alphabet of dropcap class names like .dropcap-t.</p>
+				</div>
+			</section>
+
+			<section id='advanced1-demo'>
+				<h2>Advanced #1: Chaining 2 Methods</h2>
+<code><pre>$("#demo5 h1").lettering('words').children("span").lettering();</pre></code>
+			<h4>The Result</h4>
+				<div id="demo5" class="demo">
 					<h1>Double Rainbow</h1>
 				</div>
 			</section>
 
 			<section id='advanced2-demo'>
 				<h2>Advanced #2: Chaining and Styling</h2>
-<code><pre>$("#demo5 h1").lettering()
+<code><pre>$("#demo6 h1").lettering()
 	.children("span").css({'display':'inline-block', '-webkit-transform':'rotate(-25deg)'});</pre></code>
 			<h4>The Result</h4>
-				<div id="demo5" class="demo">
+				<div id="demo6" class="demo">
 					<h1>WOOOoo!</h1>
 				</div>
 			</section>
+			
+			<section id='advanced2-demo'>
+				<h2>Advanced #3: The options object</h2>
+<pre><code>$("#demo6 h1").lettering({
+    rgxp: /([abcedfg])/gim,
+    klass: 'letter',
+    classes: { klass: true, text: true, num: true }
+});</code></pre>
+			<p>The options object can be passed to any method and has 3 properties:</p>
+			<dl>
+			  <dt>rgxp</dt>
+			  <dd><strong>Regular Expression</strong><br />
+			    The first capturing parentheses determine what text gets wrapped in spans. You can customise it if desired, in the example above only the letters a-g will be wrapped in spans.</dd>
+			  <dt>klass</dt>
+			  <dd><strong>String</strong><br />
+			    This is used as the base of the CSS class name used in the span. Use this if you run into conflicts with existing class names or just prefer something else.</dd>
+			  <dt>classes</dt>
+			  <dd><strong>Object</strong><br />
+			    An object with 3 properties that determine the CSS class names applied to the spans:
+			    <ul>
+			      <li>klass: <em>if true adds the plain base class name eg.</em> <code>&lt;span class="letter"&gt;</code></li>
+			      <li>text: <em>if true adds a class containing the matched text eg.</em> <code>&lt;span class="letter-a"&gt;</code></li>
+			      <li>num: <em>if true adds a class containing the numeric order of the letter eg.</em> <code>&lt;span class="letter3"&gt;</code></li>
+			    </ul>
+			    All the above together would give you a class name like this: <code>&lt;span class="letter letter-a letter3"&lt;</code>
+			    </dd>
+			</dl>
+			</section>
 
     </article>
-    
+
     <footer>
 			<p>&copy;2010 Dave Rupert <a href="http://daverupert.com">http://daverupert.com</a>
     </footer>
-  </div> 
+  </div>
 
 </body>
 </html>

@@ -7,29 +7,31 @@ We'll start with some really basic markup:
 	<h1 class="fancy_title">Some Title</h1>
 
 After including jQuery, [download and include the minified version of Lettering.js](http://github.com/davatron5000/Lettering.js/downloads), then a script block with the magical `.lettering()` method:
-	
+
 	<script>
 	  $(document).ready(function() {
 	    $(".fancy_title").lettering();
 	  });
 	</script>
-	
+
 The resulting code will churn your `.fancy_title` and output the following:
 
 	<h1 class="fancy_title">
-	  <span class="char1">S</span>
-	  <span class="char2">o</span>
-	  <span class="char3">m</span>
-	  <span class="char4">e</span>
-	  <span class="char5"></span>
-	  <span class="char6">T</span>
-	  <span class="char7">i</span>
-	  <span class="char8">t</span>
-	  <span class="char9">l</span>
-	  <span class="char10">e</span>
+	  <span class="char-S char1">S</span>
+	  <span class="char-o char2">o</span>
+	  <span class="char-m char3">m</span>
+	  <span class="char-e char4">e</span>
+	  <span class="char-u20 char5"> </span>
+	  <span class="char-T char6">T</span>
+	  <span class="char-i char7">i</span>
+	  <span class="char-t char8">t</span>
+	  <span class="char-l char9">l</span>
+	  <span class="char-e char10">e</span>
 	</h1>
 
-Magical. Now the text is easy to manipulate in your CSS using an ordinal `.char#` pattern.  This plugin assumes basic counting skills, but it's a pretty fast and easy way to get control over every letter.
+Magical. Now the text is easy to manipulate in your CSS using an ordinal `.char#` or alpha-numeric `.char-x` pattern.  This plugin assumes basic counting and reading skills, but it's a pretty fast and easy way to get control over every letter.
+
+Special cases such as unicode characters or spaces are URL-escaped so a space has the class `.char-u20` and an ampersand will have the class `.char-u26`.
 
 ## Consult the Wiki, Pls
 
@@ -41,6 +43,12 @@ If you have an idea for the wiki, file an issue and we'll try and write somethin
 
 ## Best Practices &amp; Kerning
 We've found this to be a pretty quick and elegant solution to create typographical CSS3 posters. It's also a great solution for really custom type headings, while keeping the text selectable.
+
+You can create kerning pairs using the following CSS syntax as a guide:
+
+	.char-A + .char-V,
+	.char-V + .char-A { margin-left: -0.1em; }
+	.char-T + .char-o { margin-left: -0.1em; }
 
 ### Best Practices
 Be smart and use sparingly. You'll probably break your browser if you try to wrap every letter on your page in a `span` tag, so don't do that.  Look to use this in your Headings, Blockquotes, Asides, etc.
