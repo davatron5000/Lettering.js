@@ -12,12 +12,15 @@
 */
 (function($){
 	function injector(t, splitter, klass, after) {
-		var a = t.text().split(splitter), inject = '';
+		var a = t.text().split(splitter), inject = [], isFirst, isLast;
 		if (a.length) {
 			$(a).each(function(i, item) {
-				inject += '<span class="'+klass+(i+1)+'">'+item+'</span>'+after;
+				isLast  = ((i + 1) === a.length) ? ' ' + klass + 'last' : '';
+				isFirst = (i === 0) ? ' ' + klass + 'first' : '';
+
+				inject[inject.length] = '<span class="'+klass+(i+1)+isFirst+isLast+'">'+item+'</span>'+after;
 			});	
-			t.empty().append(inject);
+			t.empty().append(inject.join(''));
 		}
 	}
 	
