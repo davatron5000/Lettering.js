@@ -1,4 +1,4 @@
-$ = jQuery # CoffeeScript already wraps our function in a clojure, so don't bother doing it again
+$ = jQuery # CoffeeScript already wraps our function in a closure, so don't bother doing it again
 injector = (t, splitter, klass, after) ->
 	a = t.text().split splitter
 	inject = ''
