@@ -33,5 +33,5 @@ $.fn.lettering = (method) ->
 		return methods[ method ].apply this, [].slice.call( arguments, 1 )
 	else
 		return methods.init.apply this, [].slice.call( arguments, 0 ) # Always pass an array
-	$.error( 'Method ' +  method + ' does not exist on jQuery.lettering' );
+	$.error 'Method ' +  method + ' does not exist on jQuery.lettering'
 	return this
