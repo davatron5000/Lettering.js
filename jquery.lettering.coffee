@@ -1,12 +1,11 @@
-$ = jQuery;
+$ = jQuery # CoffeeScript already wraps our function in a clojure, so don't bother doing it again
 injector = (t, splitter, klass, after) ->
 	a = t.text().split splitter
 	inject = ''
-	(
+	if a.length
 		$(a).each (i, item) ->
 			inject += '<span class="'+klass+(i+1)+'">'+item+'</span>'+after
 			return
-	) if a.length
 	t.empty().append inject
 	return
 methods =
