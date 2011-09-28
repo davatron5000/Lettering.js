@@ -9,16 +9,16 @@ injector = (t, splitter, klass, after) ->
 	t.empty().append inject
 	return
 methods =
-	init: () ->
-		this.each () ->
+	init: ->
+		this.each ->
 			injector $(this), '', 'char', ''
 			return
-	words: () ->
-		this.each () ->
+	words: ->
+		this.each ->
 			injector $(this), ' ', 'word', ' '
 			return
-	lines: () ->
-		this.each () ->
+	lines: ->
+		this.each ->
 			r = "eefec303079ad17405c889e092e105b0"
 			# Because it's hard to split a <br/> tag consistently across browsers,
 			# (*ahem* IE *ahem*), we replaces all <br/> instances with an md5 hash
@@ -27,11 +27,10 @@ methods =
 			injector $(this).children("br").replaceWith(r).end(), r, 'line', ''
 			return
 
-$.fn.lettering = (method) ->
+$.fn.lettering = ( method ) ->
 	# Method calling logic
-	if method && methods[method]
-		return methods[ method ].apply this, [].slice.call( arguments, 1 )
-	else
-		return methods.init.apply this, [].slice.call( arguments, 0 ) # Always pass an array
+	return if method? and methods[method]
+	then methods[ method ].apply this, [].slice.call( arguments, 1 )
+	else methods.init.apply this, [].slice.call( arguments, 0 ) # Always pass an array
 	$.error 'Method ' +  method + ' does not exist on jQuery.lettering'
 	return this
