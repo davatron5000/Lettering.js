@@ -4,7 +4,7 @@ injector = (t, splitter, klass, after) ->
 	inject = ''
 	if a.length
 		$(a).each (i, item) ->
-			inject += '<span class="'+klass+(i+1)+'">'+item+'</span>'+after
+			inject += "<span class=\"#{klass+(i+1)}\">#{item}</span>#{after}"
 			return
 	t.empty().append inject
 	return
