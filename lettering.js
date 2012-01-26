@@ -59,6 +59,9 @@
 	};
 
 	lettering = function( el, method ) {
+	    if (el == null) {
+	        return;
+	    }
 	    if (typeof(el.length) == "undefined") {
 	        el = [el];
 	    }
