@@ -78,9 +78,7 @@ sup { vertical-align: super; font-size: smaller; }
 
 pre { 
   padding: 15px; 
-  white-space: pre; /* CSS2 */
-  white-space: pre-wrap; /* CSS 2.1 */
-  white-space: pre-line; /* CSS 3 (and 2.1 as well, actually) */
+  white-space: pre;
   word-wrap: break-word; /* IE */
 }
  
