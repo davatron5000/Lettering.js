@@ -18,7 +18,6 @@
 	    } else {
 	        var a = t.innerText;
 	    }
-	    console.log(a);
 		var a = a.split(splitter), inject = '';
 		if (a.length) {
 		    for(var i=0, len=a.length; item=a[i], i<len; i++) {
@@ -30,7 +29,6 @@
 	
 	var methods = {
 		init : function( el ) {
-            console.log(el);
 			for(var i=el.length-1; i>=0; --i) {
 				injector(el[i], '', 'char', '');
 			}
