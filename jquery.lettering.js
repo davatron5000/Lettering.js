@@ -62,5 +62,20 @@
 		$.error( 'Method ' +  method + ' does not exist on jQuery.lettering' );
 		return this;
 	};
+	
+	$.fn.resetLettering = function( ) 
+	{
+		var text = "";
+		
+		var letters = $(this).find("span");
+		
+		for(var i = 0; i < letters.length; i++)
+		{
+			text += $(letters[i]).text();
+		}
+		
+		$(this).empty();
+		$(this).text(text);
+	};
 
 })(jQuery);
