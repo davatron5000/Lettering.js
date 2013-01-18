@@ -16,7 +16,11 @@
 		var a = opt.t.text().split(opt.splitter), inject = '';
 		if (a.length) {
 			$(a).each(function(i, item) {
-				inject += '<span class="'+opt.klass+(i+1)+'">'+item+'</span>'+opt.after;
+        if (opt.nwords && parseInt(opt.nwords, 10) <= i ) {
+          inject += item+opt.after;
+        } else {
+          inject += '<span class="'+opt.klass+(i+1)+'">'+item+'</span>'+opt.after;
+        }
 			});
 			opt.t.empty().append(inject);
 		}
@@ -35,6 +39,15 @@
 
 			return this.each(function() {
 				injector({t: $(this), splitter: ' ', klass: 'word', after: ' '});
+			});
+
+		},
+
+		nwords : function(number_of_words) {
+      var nwords = number_of_words || 0;
+
+			return this.each(function() {
+				injector({t: $(this), splitter: ' ', klass: 'word', after: ' ', nwords: nwords});
 			});
 
 		},
