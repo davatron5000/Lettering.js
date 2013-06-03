@@ -1,6 +1,6 @@
 /*global jQuery */
 /*!	
-* Lettering.JS 0.6.1
+* Lettering.JS 0.6.2
 *
 * Copyright 2010, Dave Rupert http://daverupert.com
 * Released under the WTFPL license 
@@ -8,7 +8,7 @@
 *
 * Thanks to Paul Irish - http://paulirish.com - for the feedback.
 *
-* Date: Mon Sep 20 17:14:00 2010 -0600
+* Date: Mon Jun 02 11:36:00 2013 -0600
 */
 (function($){
 	function injector(t, splitter, klass, after) {
