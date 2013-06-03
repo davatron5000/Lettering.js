@@ -6,7 +6,7 @@ We'll start with some really basic markup:
 
 	<h1 class="fancy_title">Some Title</h1>
 
-After including `jQuery 1.6.2+` or `Zepto 1.0+`, [download and include the corresponding minified version of Lettering.js](http://github.com/davatron5000/Lettering.js/downloads), then a script block with the magical `.lettering()` method:
+After including `jQuery 1.6.2+` or `Zepto 1.0+`, download and include the corresponding version Lettering.js, then add a script block with the magical `.lettering()` method:
 	
 	<script>
 	  $(document).ready(function() {
