@@ -43,7 +43,7 @@
 			return this.each(function() {
 				var r = "eefec303079ad17405c889e092e105b0";
 				// Because it's hard to split a <br/> tag consistently across browsers,
-				// (*ahem* IE *ahem*), we replaces all <br/> instances with an md5 hash 
+				// (*ahem* IE *ahem*), we replace all <br/> instances with an md5 hash 
 				// (of the word "split").  If you're trying to use this plugin on that 
 				// md5 hash string, it will fail because you're being ridiculous.
 				injector($(this).children("br").replaceWith(r).end(), r, 'line', '');
