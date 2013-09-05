@@ -15,7 +15,12 @@
 		var a = t.text().split(splitter), inject = '';
 		if (a.length) {
 			$(a).each(function(i, item) {
-				inject += '<span class="'+klass+(i+1)+'">'+item+'</span>'+after;
+				var klasses = [];
+				klasses.push(klass+(i+1));
+				if (item.match(/^[a-z]{1}$/i)) {
+					klasses.push(klass+'-'+item);
+				}
+				inject += '<span class="'+klasses.join(' ')+'">'+item+'</span>'+after;
 			});	
 			t.empty().append(inject);
 		}
