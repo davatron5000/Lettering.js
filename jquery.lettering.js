@@ -1,9 +1,9 @@
 /*global jQuery */
-/*!	
+/*!
 * Lettering.JS 0.6.1
 *
 * Copyright 2010, Dave Rupert http://daverupert.com
-* Released under the WTFPL license 
+* Released under the WTFPL license
 * http://sam.zoy.org/wtfpl/
 *
 * Thanks to Paul Irish - http://paulirish.com - for the feedback.
@@ -11,21 +11,28 @@
 * Date: Mon Sep 20 17:14:00 2010 -0600
 */
 (function($){
+
+	function char_klass(item) {
+		var ok_chars = /^[A-Za-z0-9]{1}$/,
+				suffix = item.match(ok_chars) ? item : encodeURIComponent(item).replace(/%/g,'');
+		return 'char-'+suffix;
+	}
+
 	function injector(t, splitter, klass, after) {
 		var a = t.text().split(splitter), inject = '';
 		if (a.length) {
 			$(a).each(function(i, item) {
 				var klasses = [];
 				klasses.push(klass+(i+1));
-				if (item.match(/^[a-z]{1}$/i)) {
-					klasses.push(klass+'-'+item);
+				if (klass === 'char') {
+					klasses.push(char_klass(item));
 				}
 				inject += '<span class="'+klasses.join(' ')+'">'+item+'</span>'+after;
-			});	
+			});
 			t.empty().append(inject);
 		}
 	}
-	
+
 	var methods = {
 		init : function() {
 
@@ -42,14 +49,14 @@
 			});
 
 		},
-		
+
 		lines : function() {
 
 			return this.each(function() {
 				var r = "eefec303079ad17405c889e092e105b0";
 				// Because it's hard to split a <br/> tag consistently across browsers,
-				// (*ahem* IE *ahem*), we replace all <br/> instances with an md5 hash 
-				// (of the word "split").  If you're trying to use this plugin on that 
+				// (*ahem* IE *ahem*), we replace all <br/> instances with an md5 hash
+				// (of the word "split").  If you're trying to use this plugin on that
 				// md5 hash string, it will fail because you're being ridiculous.
 				injector($(this).children("br").replaceWith(r).end(), r, 'line', '');
 			});
