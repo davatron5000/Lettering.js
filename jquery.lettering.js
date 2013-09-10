@@ -13,9 +13,13 @@
 (function($){
 
 	function char_klass(item) {
-		var ok_chars = /^[A-Za-z0-9]{1}$/,
-				suffix = item.match(ok_chars) ? item : encodeURIComponent(item).replace(/%/g,'');
-		return 'char-'+suffix;
+		var ok_chars = /^[A-Za-z0-9]{1}$/;
+		if (item === "'") {
+			item = '27';
+		} else if (!item.match(ok_chars)) {
+			item = encodeURIComponent(item).replace(/%/g,'');
+		}
+		return 'char-'+item;
 	}
 
 	function injector(t, splitter, klass, after) {
