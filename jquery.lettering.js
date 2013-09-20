@@ -17,11 +17,12 @@
 		},
 
 		word: function(i, word) {
-			return '<span class="word'+(i+1)+'" data-word="'+word+'">'+word+'</span>';
+			return '<span class="word'+(i+1)+'">'+word+'</span>';
 		},
 
 		char: function(i, char) {
-			return '<span class="char'+(i+1)+'" data-char="'+char+'">'+char+'</span>';
+			quot = char.match(/[&"]/) ? "'" : '"';
+			return '<span class="char'+(i+1)+'" data-char='+quot+char+quot+'>'+char+'</span>';
 		}
 	};
 
