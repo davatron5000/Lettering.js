@@ -21,7 +21,10 @@
 		},
 
 		char: function(i, char) {
-			quot = char.match(/[&"]/) ? "'" : '"';
+			if (char === '&') {
+				char = '&amp;';
+			}
+			quot = char === '"' ? "'" : '"';
 			return '<span class="char'+(i+1)+'" data-char='+quot+char+quot+'>'+char+'</span>';
 		}
 	};
