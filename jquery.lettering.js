@@ -11,27 +11,26 @@
 * Date: Mon Sep 20 17:14:00 2010 -0600
 */
 (function($){
+	var format = {
+		line: function(i, line) {
+			return '<span class="line'+(i+1)+'">'+line+'</span>';
+		},
 
-	function char_klass(item) {
-		var ok_chars = /^[A-Za-z0-9]{1}$/;
-		if (item === "'") {
-			item = '27';
-		} else if (!item.match(ok_chars)) {
-			item = encodeURIComponent(item).replace(/%/g,'');
+		word: function(i, word) {
+			return '<span class="word'+(i+1)+'" data-word="'+word+'">'+word+'</span>';
+		},
+
+		char: function(i, char) {
+			return '<span class="char'+(i+1)+'" data-char="'+char+'">'+char+'</span>';
 		}
-		return 'char-'+item;
-	}
+	};
 
-	function injector(t, splitter, klass, after) {
-		var a = t.text().split(splitter), inject = '';
+	function injector(t, splitter, type, after) {
+		var a = t.text().split(splitter),
+				inject = '';
 		if (a.length) {
-			$(a).each(function(i, item) {
-				var klasses = [];
-				klasses.push(klass+(i+1));
-				if (klass === 'char') {
-					klasses.push(char_klass(item));
-				}
-				inject += '<span class="'+klasses.join(' ')+'">'+item+'</span>'+after;
+			$.each(a, function(i, item) {
+				inject += format[type](i, item)+after;
 			});
 			t.empty().append(inject);
 		}
