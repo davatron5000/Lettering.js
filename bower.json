@@ -3,6 +3,7 @@
   "version": "0.6.1",
   "main": "jquery.lettering.js",
   "ignore": [
+    "examples",
     "**/.*"
   ],
   "dependencies": {
