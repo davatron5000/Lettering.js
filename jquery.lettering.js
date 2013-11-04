@@ -21,6 +21,7 @@
 		}
 	}
 	
+	function escape(str) {
 	var methods = {
 		init : function() {
 
