@@ -23,7 +23,7 @@
 		}
 	}
 	function escape(str) {
-		return String(str).replace(/&amp;/g, '&').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); // avoids double encoding &amp; http://css-tricks.com/snippets/javascript/htmlentities-for-javascript/ See comments
+		return String(str).replace(/&amp;/g, '&').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/ /g, '&nbsp;'); // avoids double encoding &amp; See comments from http://css-tricks.com/snippets/javascript/htmlentities-for-javascript/
 	}
 	var methods = {
 		init : function() {
