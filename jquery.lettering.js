@@ -17,11 +17,7 @@
 		if (a.length) {
 			$(a).each(function(i, item) {
 				escitem = escape(item);
-				if(klass === 'char') {
-					inject += '<span class="'+klass+(i+1)+' '+klass+'-'+escitem+'" data-'+klass+'="'+escitem+'">'+item+'</span>'+after;
-				} else {
-					inject += '<span class="'+klass+(i+1)+'" data-'+klass+'="'+escitem+'">'+item+'</span>'+after;
-				 }
+				inject += '<span class="'+klass+(i+1)+'" data-'+klass+'="'+escitem+'">'+item+'</span>'+after;
 			});	
 			t.empty().append(inject);
 		}
