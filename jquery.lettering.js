@@ -11,16 +11,20 @@
 * Date: Mon Sep 20 17:14:00 2010 -0600
 */
 (function($){
+  
 	function injector(t, splitter, klass, after) {
 		var a = t.text().split(splitter), inject = '';
 		if (a.length) {
 			$(a).each(function(i, item) {
-				inject += '<span class="'+klass+(i+1)+'">'+item+'</span>'+after;
+				escitem = escape(item);
+				inject += '<span class="'+klass+(i+1)+'" data-'+klass+'="'+escitem+'">'+item+'</span>'+after;
 			});	
 			t.empty().append(inject);
 		}
 	}
-	
+	function escape(str) {
+		return String(str).replace(/&amp;/g, '&').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); // avoids double encoding &amp; See comments from http://css-tricks.com/snippets/javascript/htmlentities-for-javascript/
+	}
 	var methods = {
 		init : function() {
 
