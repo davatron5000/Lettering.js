@@ -43,37 +43,83 @@ arabicLetterToFormMapper["1607"] = [0xFEEB, 0xFEEC, 0xFEEA, 0xFEE9]; // HEH
 arabicLetterToFormMapper["1608"] = [0xFEED, 0xFEEE, 0xFEEE, 0xFEED]; // WAW
 arabicLetterToFormMapper["1609"] = [0xFEF0, 0xFEF0, 0xFEF0, 0xFEEF]; // ALEF MAKSURA
 arabicLetterToFormMapper["1610"] = [0xFEF3, 0xFEF4, 0xFEF2, 0xFEF1]; // YEH
+arabicLetterToFormMapper["65270"] = [0xFEF6, 0xFEF6, 0xFEF6, 0xFEF5]; // LAM WITH ALEF WITH MADDA ABOVE
+arabicLetterToFormMapper["65271"] = [0xFEF8, 0xFEF8, 0xFEF8, 0xFEF7]; // LAM WITH ALEF WITH HAMZA ABOVE
+arabicLetterToFormMapper["65273"] = [0xFEFA, 0xFEFA, 0xFEFA, 0xFEF9]; // LAM WITH ALEF WITH HAMZA BELOW
+arabicLetterToFormMapper["65276"] = [0xFEFC, 0xFEFC, 0xFEFC, 0xFEFB]; // LAM WITH ALEF
 
 
 /*
-letter a unicode for an arabic letter
+@return array with two elements:
+    1. hex for positional form
+    2. int for merge status. 0 for no merge and 1 for merged with nextChar
  */
 function lookupPositionalForm(curCharDeci, prevCharDeci, nextCharDeci) {
+    var positionalForm, mergeStatus = 0;
     var wordBoundary = [" ", 9, 10, 13, 32, 40, 41, 46, 58, 1548];
     // letters with corner cases
-    var lettersWithCornerCases = [1570, 1571, 1572, 1573, 1575, 1583, 1584, 1585, 1586, 1608]; // ALEF WITH MADDA, WITH
-    // HAMZA ABOVE, WAW WITH HAMZA ABOVE, ALEF WITH HAMZA BELOW, ALEF, DAL, THAL, REH, ZAIN, WAW
-    // previous letter is one of the lettersWithCornerCases
-    if ($.inArray(prevCharDeci, lettersWithCornerCases) != -1) {
+    var noConnectAtEndLetters = [
+        1570, // ALEF WITH MADDA,
+        1571, // ALEF WITH HAMZA ABOVE,
+        1572, // WAW WITH HAMZA ABOVE
+        1573, // ALEF WITH HAMZA BELOW
+        1575, // ALEF
+        1583, // DAL
+        1584, // THAL
+        1585, // REH
+        1586, // ZAIN
+        1608, // WAW
+        1609];// ALEF MAKSURA
+    // LAM WITH ALEF, LAM WITH ALEF WITH MADDA ABOVE
+    var alefs = [1570, 1571, 1573, 1575];
+    if (curCharDeci == "1604" && $.inArray(nextCharDeci, alefs) != -1) {
+        console.log(curCharDeci);
+        var lamWithAlefDeci;
+        switch (nextCharDeci) {
+            case "1570":
+                lamWithAlefDeci = "65270"; // LAM WITH ALEF WITH MADDA ABOVE
+                break;
+            case "1571":
+                lamWithAlefDeci = "65271"; // LAM WITH ALEF WITH HAMZA ABOVE
+                break;
+            case "1573":
+                lamWithAlefDeci = "65273"; // LAM WITH ALEF WITH HAMZA BELOW
+                break;
+            default:
+                lamWithAlefDeci = "65276"; // LAM WITH ALEF
+        }
+        // isolated
+        if (!prevCharDeci || $.inArray(prevCharDeci, wordBoundary) != -1
+            || $.inArray(prevCharDeci, noConnectAtEndLetters) != -1) {
+            positionalForm = arabicLetterToFormMapper[lamWithAlefDeci][3];
+        }
+        else {
+            positionalForm = arabicLetterToFormMapper[lamWithAlefDeci][2];
+        }
+        mergeStatus = 1;
+    }
+    // previous letter is one of the noConnectAtEndLetters
+    else if ($.inArray(prevCharDeci, noConnectAtEndLetters) != -1) {
         // isolated
         if( !nextCharDeci || $.inArray(nextCharDeci, wordBoundary) != -1) {
-            return arabicLetterToFormMapper[curCharDeci][3];
+            positionalForm = arabicLetterToFormMapper[curCharDeci][3];
         }
         // initial
         else {
-            return arabicLetterToFormMapper[curCharDeci][0];
+            positionalForm = arabicLetterToFormMapper[curCharDeci][0];
         }
     }
     // initial
-    if( !prevCharDeci || $.inArray(prevCharDeci, wordBoundary) != -1) {
-        return arabicLetterToFormMapper[curCharDeci][0];
+    else if( !prevCharDeci || $.inArray(prevCharDeci, wordBoundary) != -1) {
+        positionalForm = arabicLetterToFormMapper[curCharDeci][0];
     }
     // final
     else if( !nextCharDeci || $.inArray(nextCharDeci, wordBoundary) != -1) {
-        return arabicLetterToFormMapper[curCharDeci][2];
+        positionalForm = arabicLetterToFormMapper[curCharDeci][2];
     }
     // medial
     else {
-        return arabicLetterToFormMapper[curCharDeci][1];
+        positionalForm = arabicLetterToFormMapper[curCharDeci][1];
     }
+    return [positionalForm, mergeStatus];
 }
