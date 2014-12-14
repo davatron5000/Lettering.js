@@ -15,8 +15,18 @@
 		var text = t.text()
 		, a = text.split(splitter)
 		, inject = '';
+		// if arabic text, change text direction to right-to-left
+	        if (text.charCodeAt(0) in arabicLetterToFormMapper) {
+	            t.parent().css("direction", "rtl");
+	        }
 		if (a.length) {
 			$(a).each(function(i, item) {
+				// obtain positional form for arabic letters
+		                if (item.length == 1 && text.charCodeAt(i) in arabicLetterToFormMapper) {
+		                    var prevChar = text.charCodeAt(i-1);
+		                    var nextChar = text.charCodeAt(i+1);
+		                    item = String.fromCharCode(lookupPositionalForm(text.charCodeAt(i), prevChar, nextChar));
+		                }
 				inject += '<span class="'+klass+(i+1)+'" aria-hidden="true">'+item+'</span>'+after;
 			});
 			t.attr('aria-label',text)
