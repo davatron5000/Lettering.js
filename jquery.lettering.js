@@ -36,6 +36,7 @@
 		                    if (resultArr[1] == 1) {
 		                        merged = 1;
 		                    }
+		                    t.css("padding-bottom", "11px"); // needs padding for dots below letter YEH to appear
 		                }
 				inject += '<span class="'+klass+(i+1)+'" aria-hidden="true">'+item+'</span>'+after;
 			});
