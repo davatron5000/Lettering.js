@@ -17,6 +17,7 @@
 		, inject = '';
 		if (a.length) {
 			$(a).each(function(i, item) {
+				after = i == a.length - 1 ? '' : after; // don't add space after last word in the text
 				inject += '<span class="'+klass+(i+1)+'" aria-hidden="true">'+item+'</span>'+after;
 			});
 			t.attr('aria-label',text)
