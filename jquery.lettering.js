@@ -28,7 +28,7 @@
 
 
 	var methods = {
-		init : function() {
+		letters : function() {
 
 			return this.each(function() {
 				injector($(this), '', 'char', '');
@@ -62,8 +62,8 @@
 		// Method calling logic
 		if ( method && methods[method] ) {
 			return methods[ method ].apply( this, [].slice.call( arguments, 1 ));
-		} else if ( method === 'letters' || ! method ) {
-			return methods.init.apply( this, [].slice.call( arguments, 0 ) ); // always pass an array
+		} else if ( ! method ) {
+			return methods.letters.apply( this, [].slice.call( arguments, 0 ) ); // always pass an array
 		}
 		$.error( 'Method ' +  method + ' does not exist on jQuery.lettering' );
 		return this;
