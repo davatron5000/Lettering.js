@@ -1,6 +1,5 @@
 {
   "name": "letteringjs",
-  "version": "0.7.0",
   "main": "jquery.lettering.js",
   "ignore": [
     "examples",
