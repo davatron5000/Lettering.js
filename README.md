@@ -5,31 +5,34 @@ We developed a lightweight, easy to use Javascript `span` injector for radical W
 ### Individual Letter Control with Lettering.js
 We'll start with some really basic markup:
 
-	<h1 class="fancy_title">Some Title</h1>
-
+```html
+<h1 class="fancy_title">Some Title</h1>
+```
 After including `jQuery 1.6.2+`, [download and include the minified version of Lettering.js](http://github.com/davatron5000/Lettering.js/downloads), then a script block with the magical `.lettering()` method:
 
-	<script>
+```html
+<script>
 	  $(document).ready(function() {
 	    $(".fancy_title").lettering();
 	  });
-	</script>
-
+</script>
+```
 The resulting code will churn your `.fancy_title` and output the following:
 
-	<h1 class="fancy_title">
-	  <span class="char1">S</span>
-	  <span class="char2">o</span>
-	  <span class="char3">m</span>
-	  <span class="char4">e</span>
-	  <span class="char5"></span>
-	  <span class="char6">T</span>
-	  <span class="char7">i</span>
-	  <span class="char8">t</span>
-	  <span class="char9">l</span>
-	  <span class="char10">e</span>
-	</h1>
-
+```html
+<h1 class="fancy_title">
+  <span class="char1">S</span>
+  <span class="char2">o</span>
+  <span class="char3">m</span>
+  <span class="char4">e</span>
+  <span class="char5"></span>
+  <span class="char6">T</span>
+  <span class="char7">i</span>
+  <span class="char8">t</span>
+  <span class="char9">l</span>
+  <span class="char10">e</span>
+</h1>
+```
 Magical. Now the text is easy to manipulate in your CSS using an ordinal `.char#` pattern.  This plugin assumes basic counting skills, but it's a pretty fast and easy way to get control over every letter.
 
 ### Letters, words, lines, and more!
@@ -52,7 +55,7 @@ Lettering.js is now accessible by default. It uses an `aria-label` on the parent
 As with any kind of Javascript, have a fall back plan in case the user doesn't have javascript enabled.  The bottom line is up to you, my bottom line would be "legible and on the screen". Also, use `lettering.min.js` [Download the Minified Version of Lettering.js here](http://github.com/davatron5000/Lettering.js/downloads)
 
 #### Performance Anti-Pattern
-Web performance patterns advise that you put Javascripts at the bottom of your page before your `</body>` tag.  There is an unfortunate side effect where you may experiences a [FOUT (Flash of Unstyled Text)](http://paulirish.com/2009/fighting-the-font-face-fout/) when you're manipulating your text after the DOM has loaded.  Unfortunately, we found the best solution to avoid/minimize the FOUT caused by this plugin is to put your scripts (jQuery, Lettering.js) in the document `<head>`. On the one hand, your page will load slower. On the other hand, a flash/restyling makes your site feel slow. Users might ultimately feel the site is faster if they don't see the FOUT.
+Web performance patterns advise that you put Javascripts at the bottom of your page before your `</body>` tag.  There is an unfortunate side effect where you may experience a [FOUT (Flash of Unstyled Text)](http://paulirish.com/2009/fighting-the-font-face-fout/) when you're manipulating your text after the DOM has loaded.  Unfortunately, we found the best solution to avoid/minimize the FOUT caused by this plugin is to put your scripts (jQuery, Lettering.js) in the document `<head>`. On the one hand, your page will load slower. On the other hand, a flash/restyling makes your site feel slow. Users might ultimately feel the site is faster if they don't see the FOUT.
 
 ### Download, Fork, Commit, Please.
 We really want Lettering.js to be a quality helper for web typography.  If you have any feedback or suggestions, please leave those over on the Github.  We're excited about typography on the web and want to help make it print quality.
