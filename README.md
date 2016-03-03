@@ -5,30 +5,36 @@ We developed a lightweight, easy to use Javascript `span` injector for radical W
 ### Individual Letter Control with Lettering.js
 We'll start with some really basic markup:
 
-	<h1 class="fancy_title">Some Title</h1>
+```html
+<h1 class="fancy_title">Some Title</h1>
+```
 
 After including `jQuery 1.6.2+`, [download and include the minified version of Lettering.js](http://github.com/davatron5000/Lettering.js/downloads), then a script block with the magical `.lettering()` method:
 
-	<script>
-	  $(document).ready(function() {
-	    $(".fancy_title").lettering();
-	  });
-	</script>
+```html
+<script>
+$(document).ready(function() {
+	$(".fancy_title").lettering();
+});
+</script>
+```
 
 The resulting code will churn your `.fancy_title` and output the following:
 
-	<h1 class="fancy_title">
-	  <span class="char1">S</span>
-	  <span class="char2">o</span>
-	  <span class="char3">m</span>
-	  <span class="char4">e</span>
-	  <span class="char5"></span>
-	  <span class="char6">T</span>
-	  <span class="char7">i</span>
-	  <span class="char8">t</span>
-	  <span class="char9">l</span>
-	  <span class="char10">e</span>
-	</h1>
+```html
+<h1 class="fancy_title">
+    <span class="char1">S</span>
+    <span class="char2">o</span>
+    <span class="char3">m</span>
+    <span class="char4">e</span>
+    <span class="char5"></span>
+    <span class="char6">T</span>
+    <span class="char7">i</span>
+    <span class="char8">t</span>
+    <span class="char9">l</span>
+    <span class="char10">e</span>
+</h1>
+```
 
 Magical. Now the text is easy to manipulate in your CSS using an ordinal `.char#` pattern.  This plugin assumes basic counting skills, but it's a pretty fast and easy way to get control over every letter.
 
