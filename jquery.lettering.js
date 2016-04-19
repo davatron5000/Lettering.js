@@ -17,7 +17,7 @@
 		, inject = '';
 		if (a.length) {
 			$(a).each(function(i, item) {
-				inject += '<span class="'+klass+(i+1)+'" aria-hidden="true">'+item+'</span>'+after;
+				inject += '<span class="' + klass + ' ' + klass + (i+1) +'" aria-hidden="true">'+item+'</span>'+after;
 			});
 			t.attr('aria-label',text)
 			.empty()
