@@ -1,5 +1,7 @@
 
 ## Lettering.js, a jQuery plugin for radical Web Typography
+[![CDNJS](https://img.shields.io/cdnjs/v/lettering.js.svg)](https://cdnjs.com/libraries/lettering.js)
+
 We developed a lightweight, easy to use Javascript `span` injector for radical Web Typography, we're calling it "lettering-jay-ess", and we're releasing it today for free over on Github. Let me demo it for you: `</stevejobs>`
 
 ### Individual Letter Control with Lettering.js
