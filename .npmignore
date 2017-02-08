@@ -1,0 +1,4 @@
+examples
+**/.**
+/Lettering.js.iml
+/node_modules/
