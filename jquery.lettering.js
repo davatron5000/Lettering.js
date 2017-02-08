@@ -15,8 +15,29 @@
 		var text = t.text()
 		, a = text.split(splitter)
 		, inject = '';
+		// if arabic text, change text direction to right-to-left
+	        if (text.charCodeAt(0) in arabicLetterToFormMapper) {
+	            t.parent().css("direction", "rtl");
+	        }
 		if (a.length) {
+			var merged = 0;
 			$(a).each(function(i, item) {
+				// if letter was merged with preceding letter, skip to next iteration
+		                if (merged == 1) {
+		                    merged = 0;
+		                    return true;
+		                }
+				// obtain positional form for arabic letters
+		                if (item.length == 1 && text.charCodeAt(i) in arabicLetterToFormMapper) {
+		                    var prevChar = text.charCodeAt(i-1);
+		                    var nextChar = text.charCodeAt(i+1);
+		                    var resultArr = lookupPositionalForm(text.charCodeAt(i), prevChar, nextChar);
+		                    item = String.fromCharCode(resultArr[0]);
+		                    if (resultArr[1] == 1) {
+		                        merged = 1;
+		                    }
+		                    t.css("padding-bottom", "11px"); // needs padding for dots below letter YEH to appear
+		                }
 				inject += '<span class="'+klass+(i+1)+'" aria-hidden="true">'+item+'</span>'+after;
 			});
 			t.attr('aria-label',text)
