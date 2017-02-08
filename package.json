@@ -1,0 +1,22 @@
+{
+  "name": "letteringjs",
+  "version": "0.7.1",
+  "description": "We developed a lightweight, easy to use Javascript `span` injector for radical Web Typography, we're calling it \"lettering-jay-ess\", and we're releasing it today for free over on Github. Let me demo it for you: `</stevejobs>`",
+  "main": "jquery.lettering.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gordon-git/Lettering.js.git"
+  },
+  "author": "Dave Rupert",
+  "license": "WTFPL",
+  "bugs": {
+    "url": "https://github.com/gordon-git/Lettering.js/issues"
+  },
+  "homepage": "https://github.com/gordon-git/Lettering.js#readme"
+}
