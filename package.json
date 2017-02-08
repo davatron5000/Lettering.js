@@ -11,14 +11,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gordon-git/Lettering.js.git"
+    "url": "git+https://github.com/davatron5000/Lettering.js"
   },
   "author": "Dave Rupert",
   "license": "WTFPL",
   "bugs": {
-    "url": "https://github.com/gordon-git/Lettering.js/issues"
+    "url": "https://github.com/davatron5000/Lettering.js/issues"
   },
-  "homepage": "https://github.com/gordon-git/Lettering.js#readme",
+  "homepage": "https://github.com/davatron5000/Lettering.js#readme",
   "dependencies": {
     "jquery": "^1.6.2"
   }
