@@ -10,7 +10,18 @@
 *
 * Date: Mon Sep 20 17:14:00 2010 -0600
 */
-(function($){
+(function (factory) {
+	if (typeof define === 'function' && define.amd) {
+		// AMD. Register as an anonymous module.
+		define(['jquery'], factory);
+	} else if (typeof exports === 'object') {
+		// Node/CommonJS
+		module.exports = factory(require('jquery'));
+	} else {
+		// Browser globals
+		factory(jQuery);
+	}
+}(function($){
 	function injector(t, splitter, klass, after) {
 		var text = t.text()
 		, a = text.split(splitter)
@@ -69,4 +80,4 @@
 		return this;
 	};
 
-})(jQuery);
+}));
