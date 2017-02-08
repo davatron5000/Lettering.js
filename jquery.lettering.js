@@ -28,7 +28,7 @@
 
 
 	var methods = {
-		init : function() {
+		letters : function() {
 
 			return this.each(function() {
 				injector($(this), '', 'char', '');
@@ -58,15 +58,14 @@
 		}
 	};
 
-	$.fn.lettering = function( method ) {
-		// Method calling logic
-		if ( method && methods[method] ) {
-			return methods[ method ].apply( this, [].slice.call( arguments, 1 ));
-		} else if ( method === 'letters' || ! method ) {
-			return methods.init.apply( this, [].slice.call( arguments, 0 ) ); // always pass an array
-		}
-		$.error( 'Method ' +  method + ' does not exist on jQuery.lettering' );
-		return this;
-	};
+        $.fn.lettering = function( method ) {
+               try {
+                       return methods[ method || "letters" ].apply( this );
+               } catche (e)  {
+                      $.error( 'Method ' + method + ' does not exist on jQuery.lettering' );
+               }
+               return this;
+       };
+
 
 })(jQuery);
