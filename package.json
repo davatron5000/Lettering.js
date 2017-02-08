@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/gordon-git/Lettering.js/issues"
   },
-  "homepage": "https://github.com/gordon-git/Lettering.js#readme"
+  "homepage": "https://github.com/gordon-git/Lettering.js#readme",
+  "dependencies": {
+    "jquery": "^1.6.2"
+  }
 }
