@@ -16,6 +16,7 @@
 		, a = text.split(splitter)
 		, inject = '';
 		if (a.length) {
+			$(t).addClass('total-' + klass + 's-' + a.length);
 			$(a).each(function(i, item) {
 				inject += '<span class="'+klass+(i+1)+'" aria-hidden="true">'+item+'</span>'+after;
 			});
