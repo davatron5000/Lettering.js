@@ -1,0 +1,12 @@
+{
+  "name": "letteringjs",
+  "version": "0.7.0",
+  "main": "jquery.lettering.js",
+  "ignore": [
+    "examples",
+    "**/.*"
+  ],
+  "dependencies": {
+    "jquery": ">= 1.6.2"
+  }
+}
