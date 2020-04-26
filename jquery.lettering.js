@@ -13,15 +13,19 @@
 (function($){
 	function injector(t, splitter, klass, after) {
 		var text = t.text()
-		, a = text.split(splitter)
-		, inject = '';
+		, a = text.split(splitter);
 		if (a.length) {
+			t.innerHTML = '';
 			$(a).each(function(i, item) {
-				inject += '<span class="'+klass+(i+1)+'" aria-hidden="true">'+item+'</span>'+after;
+				var span = document.createElement('span');
+				span.className = klass + (i + 1);
+				span.setAttribute('aria-hidden', 'true');
+				span.textContent = item;
+				t[0].appendChild(span);
+				if (after)
+					t[0].appendChild(document.createTextNode(after));
 			});
-			t.attr('aria-label',text)
-			.empty()
-			.append(inject)
+			t.attr('aria-label',text);
 
 		}
 	}
