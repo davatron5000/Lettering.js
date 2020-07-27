@@ -11,9 +11,9 @@
 * Date: Mon Sep 20 17:14:00 2010 -0600
 */
 (function($){
-	function injector(t, splitter, klass, after) {
+	function injector(t, splitter, klass, after, match) {
 		var text = t.text()
-		, a = text.split(splitter)
+		, a = match ? text.match(splitter) : text.split(splitter)
 		, inject = '';
 		if (a.length) {
 			$(a).each(function(i, item) {
@@ -31,7 +31,7 @@
 		init : function() {
 
 			return this.each(function() {
-				injector($(this), '', 'char', '');
+				injector($(this), /([\u0000-\u007F])|([^\u0000-\u007F]+)/g, 'char', '', true);
 			});
 
 		},
@@ -39,7 +39,7 @@
 		words : function() {
 
 			return this.each(function() {
-				injector($(this), ' ', 'word', ' ');
+				injector($(this), /\s/g, 'word', ' ', false);
 			});
 
 		},
@@ -54,6 +54,7 @@
 				// md5 hash string, it will fail because you're being ridiculous.
 				injector($(this).children("br").replaceWith(r).end(), r, 'line', '');
 			});
+
 
 		}
 	};
